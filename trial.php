@@ -5,7 +5,7 @@
  * Date: 10/6/2017
  * Time: 5:03 PM
  */
-include_once 'database.php';
+require_once 'src/database.php';
 $query = 'select * from student';
 $data = db_process($query);
 foreach ($data as $datum){
