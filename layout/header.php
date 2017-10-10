@@ -39,7 +39,7 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Home</a></li>
+                <li class="active"><a href="index.php">Home</a></li>
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">Page 1 <span class="caret"></span></a>
                     <ul class="dropdown-menu">
@@ -52,8 +52,18 @@
                 <li><a href="#">Page 3</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                <?php
+                if(session_status()==PHP_SESSION_NONE){
+                    session_start();
+                }
+                ?>
+                <?php if(!isset($_SESSION['username'])){?>
+                <li><a href="Registration-page.php"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                <li><a href="Login-page.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                <?php }else{?>
+                <li><a href="user-page.php"><span class="glyphicon glyphicon-user"></span><?= $_SESSION['username']?></a></li>
+                <li><a href="log-out.php"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+                <?php }?>
             </ul>
         </div>
     </div>
