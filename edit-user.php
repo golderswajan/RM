@@ -1,28 +1,7 @@
 <?php include_once 'layout/header.php';
 require_once 'src/database.php';
 
-
-if (isset($_POST['reg'])) {
-    $query = "INSERT INTO customer VALUES ('','$_POST[username]','$_POST[password]','$_POST[address]','$_POST[contact]')";
-    db_insert($query);
-    header('Location: index.php');
-}
 ?>
-    <script>
-        function passwordCheck() {
-            var pass = $('#password').val();
-            var conFirm = $('#password_confirm').val();
-            var error = $('#confirmText');
-
-            if (pass != conFirm) {
-                error.text("Password doesn't match");
-            } else {
-                error.text("");
-            }
-
-
-        }
-    </script>
 
     <style>
         .box-input {
@@ -61,7 +40,7 @@ if (isset($_POST['reg'])) {
                         <div class="form-group">
                             <input type="password" id="password_confirm" name="password_confirm" placeholder=""
                                    class="form-control input-lg" required onchange="passwordCheck()"><span><p
-                                        id="confirmText" style="color: red"></p></span>
+                                    id="confirmText" style="color: red"></p></span>
                         </div>
                     </div>
 
