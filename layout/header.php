@@ -14,20 +14,15 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <style>
-        .footer{
-            position: fixed;
-            width: 100%;
-            height: 80px;
-            left: 0;
-            bottom: 0;
-            background-color:#DCDCDC ;
-            text-align: center;
+        .contact-item{
+            color: #F4F4F4;
         }
+
     </style>
 </head>
 <body>
 
-<nav class="navbar navbar-inverse"">
+<nav class="navbar navbar-inverse navbar-fixed-top on">
     <div class="container-fluid" >
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -35,7 +30,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Resturant Management</a>
+            <a class="navbar-brand" href="#" style="color: #00CC00;font-size: 30px;font-family: 'Harlow Solid Italic'">WE HUNGRY</a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">

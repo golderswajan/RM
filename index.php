@@ -5,36 +5,336 @@
  * Date: 10/7/2017
  * Time: 4:04 AM
  */
-include_once 'layout/header.php';
 ?>
-<h3>Home Page Demo</h3>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<h2>The end </h2>
-<?php
-    include_once 'layout/footer.php';
-?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+        .contact-item{
+            color: #F4F4F4;
+        }
+
+    </style>
+</head>
+<body style="background-color: #CCCCCC">
+
+<nav class="navbar navbar-inverse navbar-fixed-top on" style="margin-bottom: 50px">
+    <div class="container-fluid" >
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#" style="color: #00CC00;font-size: 30px;font-family: 'Harlow Solid Italic'">WE HUNGRY</a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="index.php">Home</a></li>
+                <li><a href="#">Food Menu</a></li>
+                <li><a href="#">Order</a></li>
+                <li><a href="#">About</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <?php
+                if(session_status()==PHP_SESSION_NONE){
+                    session_start();
+                }
+                ?>
+                <?php if(!isset($_SESSION['username'])){?>
+                    <li><a href="Registration-page.php"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                    <li><a href="Login-page.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                <?php }else{?>
+                    <li><a href="user-page.php"><span class="glyphicon glyphicon-user"></span><?= $_SESSION['username']?></a></li>
+                    <li><a href="log-out.php"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+                <?php }?>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <div class="row">
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#myCarousel" data-slide-to="1"></li>
+                <li data-target="#myCarousel" data-slide-to="2"></li>
+                <li data-target="#myCarousel" data-slide-to="3"></li>
+            </ol>
+
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner" style="">
+
+                <div class="item active">
+                    <img src="images/intro-bg.jpg" alt="Los Angeles" style="width:100%;height: 500px;">
+                    <div class="carousel-caption">
+                        <h3>Our  Decoration</h3>
+                        <p>This confirms your delightness.</p>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <img src="images/gallery-bg.jpg" alt="Chicago" style="width:100%;height: 500px;">
+                    <div class="carousel-caption">
+                        <h3>Our Gorgeous furnisher</h3>
+                        <p>This confirms your 100% comfort.</p>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <img src="images/burger.jpg" alt="New York" style="width:100%;height: 500px;">
+                    <div class="carousel-caption">
+                        <h3>Yammy Burger</h3>
+                        <p>You must love her</p>
+                    </div>
+                </div>
+                <div class="item">
+                    <img src="images/pizza.jpg" alt="New York" style="width:100%;height: 500px;">
+                    <div class="carousel-caption">
+                        <h3>Delicious Pizza</h3>
+                        <p>This 100% satisfies your taste.</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Left and right controls -->
+            <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </div>
+
+<!--    content ends-->
+    <div class="content-body container" style="margin-left: 7%;">
+
+        <!--Welcome Part Start-->
+        <div class="row">
+
+            <!--Welcome Start-->
+            <div class="col-md-6 col-lg-7 welcome">
+                <h1 style="color: #9C27B0">Welcome to WE HUNGRY</h1>
+                <p>
+                    <img src="images/restaurant.jpg" class="img col-sm-6 col-xs-8 img-responsive img-circle pull-left">
+                    In 2001, <strong>WE HUNGRY RESTAURANT</strong> of Khulna started its all food serving
+                    activities with only some small area for only in place service. Since then, around 6 years it ie serving
+                    standanrd BSTI certified foods.From 2003 it has started serving online order which has a great
+                    reputation .It not only serve foods in khulna but also outside of khulna . Outside of khulna many
+                    people comes for the <strong>WE HUNGRY</strong> test.The price of foods is also resonable here.
+                    We serve <span style="color: #E91E63">Pizza,Burger,Grill,BBQ,Chiken Fry, Fried Rice etc etc.</span>
+                    If you are a crazzy lover of food then as a friend i suggest you to check the <strong>WE HUNGRY</strong>
+                    test.
+                </p>
+            </div>
+            <!--Welcome End-->
+
+            <div class="col-md-5 col-lg-4 col-xs-11">
+                <br>
+                <ul class="nav nav-tabs nav-justified" style="background-color: #E3E3E3">
+                    <li class="active">
+                        <a data-toggle="tab" href="#breakfast">Breakfast</a>
+                    </li>
+                    <li>
+                        <a data-toggle="tab" href="#launch">Launch</a>
+                    </li>
+                    <li>
+                        <a data-toggle="tab" href="#snacks">Snacks</a>
+                    </li>
+
+                    <li>
+                        <a data-toggle="tab" href="#dinner">Dinner</a>
+                    </li>
+                </ul>
+
+                <div class="tab-content">
+                    <!--Breakfast Start-->
+                    <div id="breakfast" class="tab-pane fade in active">
+                        <ul class="list-group">
+                            <li class="list-group-item row">
+
+                                <img src="images/pizza.jpg" alt="" class="img img-responsive col-xs-3 img-thumbnail">
+                                <a href="#" class="col-xs-9">
+                                    breakfast
+                                </a>
+                            </li>
+                            <li class="list-group-item row">
+
+                                <img src="images/pizza.jpg" class="img img-responsive col-xs-3 img-thumbnail">
+                                <a href="#">
+                                    breakfast
+                                </a>
+                            </li>
+                            <li class="list-group-item row">
+
+                                <img src="images/pizza.jpg" class="img img-responsive col-xs-3 img-thumbnail">
+                                <a href="#" class="col-xs-9">
+                                    breakfast
+                                </a>
+                            </li>
+                            <li class="list-group-item row">
+                                <a href="#" class="btn btn-primary btn-lg pull-right">
+                                    See all breakfast
+                                </a>
+                            </li>
+                        </ul>
+
+                    </div>
+                    <!--Breakfast End-->
+                    <!--News End-->
+
+                    <!--Launch Start-->
+                    <div id="launch" class="tab-pane fade">
+                        <ul class="list-group">
+                            <li class="list-group-item row">
+
+                                <img src="images/pizza.jpg" alt="" class="img img-responsive col-xs-3 img-thumbnail">
+                                <a href="#" class="col-xs-9">
+                                    launch
+                                </a>
+                            </li>
+                            <li class="list-group-item row">
+
+                                <img src="images/pizza.jpg" class="img img-responsive col-xs-3 img-thumbnail">
+                                <a href="#">
+                                    launch
+                                </a>
+                            </li>
+                            <li class="list-group-item row">
+
+                                <img src="images/pizza.jpg" class="img img-responsive col-xs-3 img-thumbnail">
+                                <a href="#" class="col-xs-9">
+                                    launch
+                                </a>
+                            </li>
+                            <li class="list-group-item row">
+                                <a href="#" class="btn btn-primary btn-lg pull-right">
+                                    See all launch
+                                </a>
+                            </li>
+                        </ul>
+
+                    </div>
+                    <!--Launch End-->
+
+                    <!--Snacks Start-->
+                    <div id="snacks" class="tab-pane fade">
+                        <ul class="list-group">
+                            <li class="list-group-item row">
+
+                                <img src="images/pizza.jpg" alt="" class="img img-responsive col-xs-3 img-thumbnail">
+                                <a href="#" class="col-xs-9">
+                                    snacks
+                                </a>
+                            </li>
+                            <li class="list-group-item row">
+
+                                <img src="images/pizza.jpg" class="img img-responsive col-xs-3 img-thumbnail">
+                                <a href="#">
+                                    snacks
+                                </a>
+                            </li>
+                            <li class="list-group-item row">
+
+                                <img src="images/pizza.jpg" class="img img-responsive col-xs-3 img-thumbnail">
+                                <a href="#" class="col-xs-9">
+                                    snacks
+                                </a>
+                            </li>
+                            <li class="list-group-item row">
+                                <a href="#" class="btn btn-primary btn-lg pull-right">
+                                    See all snacks
+                                </a>
+                            </li>
+                        </ul>
+
+                    </div>
+                    <!--Snack End-->
+
+                    <!--Dinner Start-->
+                    <div id="dinner" class="tab-pane fade">
+                        <ul class="list-group">
+                            <li class="list-group-item row">
+
+                                <img src="images/pizza.jpg" alt="" class="img img-responsive col-xs-3 img-thumbnail">
+                                <a href="#" class="col-xs-9">
+                                    dinner
+                                </a>
+                            </li>
+                            <li class="list-group-item row">
+
+                                <img src="images/pizza.jpg" class="img img-responsive col-xs-3 img-thumbnail">
+                                <a href="#">
+                                    dinner
+                                </a>
+                            </li>
+                            <li class="list-group-item row">
+
+                                <img src="images/pizza.jpg" class="img img-responsive col-xs-3 img-thumbnail">
+                                <a href="#" class="col-xs-9">
+                                    dinner
+                                </a>
+                            </li>
+                            <li class="list-group-item row">
+                                <a href="#" class="btn btn-primary btn-lg pull-right">
+                                    See all dinners
+                                </a>
+                            </li>
+                        </ul>
+
+                    </div>
+                    <!--Dinner End-->
+
+                </div>
+            </div>
+
+        </div>
+        <!--Welcome Part End-->
+
+    </div>
+<!--    content ends-->
+</div>
+
+
+<!--<div class="footer">This is footer</div>-->
+<div id="footer" style="background-color: #262626">
+    <div class="container text-center">
+        <div class="col-md-4">
+            <h3 class="item-head" style="color: #81A63B">Address</h3>
+            <div class="contact-item">
+                <p>Sat Raster More,</p>
+                <p>Khulna, Bangladesh</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <h3 class="item-head" style="color: #81A63B">Opening Hours</h3>
+            <div class="contact-item">
+                <p>Sun-Thurs: 10:00 AM - 11:00 PM</p>
+                <p>Fri-Sat: 11:00 AM - 02:00 AM</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <h3 class="item-head" style="color: #81A63B">Contact Info</h3>
+            <div class="contact-item" >
+                <p>Phone: 01571777609</p>
+                <p>Email: we.hungry@gmail.com</p>
+            </div>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>
+
