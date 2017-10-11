@@ -6,8 +6,6 @@
  * Time: 5:03 PM
  */
 require_once 'src/database.php';
-$query = 'select * from student';
-$data = db_process($query);
-foreach ($data as $datum){
-    echo $datum['name'].$datum['address'].$datum['discipline'].'<br>';
-}
+$query = 'select * from customer';
+$data = db_select($query);
+echo $data[0]['name'].$data[0]['address'];

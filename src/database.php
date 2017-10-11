@@ -15,14 +15,20 @@ function db_delete($query){
 }
 
 function db_select($query){
+    echo $query;
     $con = db_connect();
     $rows = $con->query($query);
     $data=[];
-    $rows = $rows->fetch_all(MYSQLI_BOTH);
-    foreach ($rows as $row){
-        array_push($data,$row);
+    if($rows==null){
+        echo "Database query failed";
+        return $data;
+    }else {
+        $rows = $rows->fetch_all(MYSQLI_BOTH);
+        foreach ($rows as $row){
+            array_push($data,$row);
+        }
+        $con->close();
     }
-    $con->close();
     return $data;
 
 }
@@ -34,7 +40,10 @@ function db_connect(){
     $con= new mysqli($serverName,$userName,$password,$dbName);
     if($con->connect_errno){
         die("coonection failed".$con->connect_error);
-    }else  return $con;
+    }else {
+        echo "connected";
+        return $con;
+    }
 
 
 }

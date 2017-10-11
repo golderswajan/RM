@@ -7,9 +7,10 @@ include_once 'src/database.php';
 if (isset($_POST['log'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
-    $query = "SELECT name,password from customer WHERE name='$username' and password=$password;";
-    $result = db_select($query);
+    echo $username.$password;
+    $query = "SELECT name,password from customer WHERE name='$username' and password='$password';";
 
+    $result = db_select($query);
     if ($result != null) {
 
      if (session_status() == PHP_SESSION_NONE) {

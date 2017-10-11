@@ -9,6 +9,17 @@ if (isset($_POST['reg'])) {
 }
 ?>
     <script>
+
+        $(document).ready(function(){
+            $("form").submit(function(e){
+                var pass = $('#password').val();
+                var conPass = $('#password_confirm').val();
+                if(pass!=conPass){
+                    e.preventDefault(e);
+                }
+
+            });
+        })
         function passwordCheck() {
             var pass = $('#password').val();
             var conFirm = $('#password_confirm').val();
