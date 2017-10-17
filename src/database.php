@@ -7,15 +7,14 @@ function db_insert($query){
 }
 
 function db_update($query){
-   insert($query);
+   db_insert($query);
 }
 
 function db_delete($query){
-    insert($query);
+    db_insert($query);
 }
 
 function db_select($query){
-    echo $query;
     $con = db_connect();
     $rows = $con->query($query);
     $data=[];
@@ -41,7 +40,7 @@ function db_connect(){
     if($con->connect_errno){
         die("coonection failed".$con->connect_error);
     }else {
-        echo "connected";
+
         return $con;
     }
 
