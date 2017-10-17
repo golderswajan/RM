@@ -15,7 +15,6 @@ function db_delete($query){
 }
 
 function db_select($query){
-    echo $query;
     $con = db_connect();
     $rows = $con->query($query);
     $data=[];

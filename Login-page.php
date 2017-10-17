@@ -36,7 +36,7 @@ if (isset($_POST['log'])) {
             box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12) !important;
         }
     </style>
-    <div class="container" style="background: #f1f1f1">
+    <div class="container" style="background: #f1f1f1;min-height: 55vh">
         <div class="panel-body">
             <div class="col-md-6">
 

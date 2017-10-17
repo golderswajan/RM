@@ -50,7 +50,7 @@
                 <li><a href="Registration-page.php"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
                 <li><a href="Login-page.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
                 <?php }else{?>
-                <li><a href="user-page.php"><span class="glyphicon glyphicon-user"></span><?= $_SESSION['username']?></a></li>
+                <li><a href="user-page.php"><span class="glyphicon glyphicon-user"></span><span style="color: #00CC00;"><?= $_SESSION['username']?></span></a></li>
                 <li><a href="log-out.php"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
                 <?php }?>
             </ul>
