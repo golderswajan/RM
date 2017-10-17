@@ -1,6 +1,14 @@
 <?php
 include_once 'layout/header.php';
 include_once 'src/database.php';
+$sql="SELECT type_name FROM type;";
+$types=db_select($sql);
+
+foreach ( $types as $type)
+{
+ echo $type['type_name'];
+
+}
 
 ?>
 
@@ -56,6 +64,18 @@ include_once 'src/database.php';
                 <textarea class="form-control" style="font-size: large" rows="1" cols="" name="ing" id="ing"
                           required></textarea>
                 <p id="userPara"></p>
+            </div>
+
+            <!--Type-->
+            <h3>Type*</h3>
+            <div class="form-group">
+                <select class="form-control" title="Type" style="width: 100%;" name="type" id="">
+                    <?php foreach ( $types as $type) { ?>
+                        <option
+                            <?php echo $type['type_name']; ?>
+                        </option>
+                    <?php } ?>
+                </select>
             </div>
 
             <!--Price-->
