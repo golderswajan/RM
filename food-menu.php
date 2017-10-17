@@ -40,17 +40,19 @@ $foods=db_select($query);
 
 if(isset($_GET['delete-id']))
 {
-$id=$_GET['delete-id'];
-$sql="Delete from foodmenu WHERE id='$id'";
-db_delete($sql);
+    $id=$_GET['delete-id'];
+    $sql="Delete from foodmenu WHERE id='$id'";
+    db_delete($sql);
+    $address = "Location: refresh.php?address=".$_SERVER['PHP_SELF'];
+    header($address);
 }
 
 ?>
 
 <script>
     function deleteRow(id) {
-        window.alert("Do You Want To Delete This Update?");
-        window.open('./food-menu.php?delete-id=' + id +'_self');
+
+        if(confirm('Are you sure to delete ?'))window.open('./food-menu.php?delete-id=' + id ,'_self');
     }
 </script>
 

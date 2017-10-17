@@ -34,8 +34,8 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="index.php">Home</a></li>
-                <li><a href="#">Food Menu</a></li>
+                <li class="active"><a href="index.php">Home</a></li>php
+                <li><a href="food-menu.php">Food Menu</a></li>
                 <li><a href="#">Order</a></li>
                 <li><a href="#">About</a></li>
 
@@ -58,6 +58,6 @@
     </div>
 </nav>
 
-<div class="container" style="margin-bottom: 100px">
+<div class="container" style="margin-bottom: 100px;min-height: 58vh">
 
 
