@@ -1,13 +1,30 @@
 <?php include_once 'layout/header.php';
 require_once 'src/database.php';
 $name=$_SESSION['username'];
-$query="select id,password,address,contact from customer WHERE  name='$name'";
+
+$sqlid="select id from customer WHERE name='$name'";
+$res=db_select($sqlid);
+$id=$res[0]['id'];
+
+if(isset($_POST['update']))
+{
+    $upName=$_POST['name'];
+    $upPass=$_POST['pass'];
+    $upAdd=$_POST['addr'];
+    $upContact=$_POST['cont'];
+
+    $sql="update customer set name='$upName',password='$upPass',address='$upAdd',contact='$upContact' where id='$id'";
+    db_update($sql);
+}
+
+
+$query="select password,address,contact from customer WHERE  name='$name'";
 $result=db_select($query);
-$id=$result[0]['id'];
-$add=$result[0]['address'];
 $pass=$result[0]['password'];
 $add=$result[0]['address'];
 $contact=$result[0]['contact'];
+
+
 ?>
     <style>
         .box-input {
@@ -57,7 +74,7 @@ $contact=$result[0]['contact'];
                                     <div class="box-input">
                                         <label class="control-label" for="username">Name</label>
                                         <div class="form-group">
-                                            <input type="text" id="username" name="username"
+                                            <input type="text" id="username" name="name"
                                                    class="form-control input-lg" value="<?=$name?>" >
                                         </div>
                                     </div>
@@ -65,7 +82,7 @@ $contact=$result[0]['contact'];
                                     <div class="box-input">
                                         <label class="control-label" for="password">Password</label>
                                         <div class="form-group">
-                                            <input type="password" id="password" name="password" placeholder=""
+                                            <input type="password" id="password" name="pass" placeholder=""
                                                    class="form-control input-lg" value="<?=$pass?>">
                                         </div>
                                     </div>
@@ -73,14 +90,14 @@ $contact=$result[0]['contact'];
                                     <div class="box-input">
                                         <label class="control-label" >Address</label>
                                         <div class="form-group">
-                                            <input type="text" id="address" name="address"
+                                            <input type="text" id="address" name="addr"
                                                    class="form-control input-lg" value="<?=$add?>">
                                         </div>
                                     </div>
                                     <div class="box-input">
                                         <label class="control-label">Contact</label>
                                         <div class="form-group">
-                                            <input type="text" id="contact" name="contact"
+                                            <input type="text" id="contact" name="cont"
                                                    class="form-control input-lg" value="<?=$contact?>">
                                         </div>
                                     </div>
@@ -88,7 +105,7 @@ $contact=$result[0]['contact'];
                                     <div>
                                         <!-- Button -->
                                         <div class="form-group">
-                                            <button class="btn btn-primary" name="log">Update</button>
+                                            <button class="btn btn-primary" name="update">Update</button>
                                             <button class="btn btn-primary">Cancel</button>
                                         </div>
                                     </div>
