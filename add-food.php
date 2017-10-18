@@ -4,12 +4,6 @@ include_once 'src/database.php';
 $sql="SELECT type_name FROM type;";
 $types=db_select($sql);
 
-foreach ( $types as $type)
-{
- echo $type['type_name'];
-
-}
-
 ?>
 
 
@@ -66,8 +60,8 @@ foreach ( $types as $type)
             <div class="form-group">
                 <select class="form-control" title="Type" style="width: 100%;" name="type" id="">
                     <?php foreach ( $types as $type) { ?>
-                        <option
-                            <?php echo $type['type_name']; ?>
+                        <option>
+                            <?=ucfirst( $type['type_name']);?>
                         </option>
                     <?php } ?>
                 </select>
@@ -76,8 +70,7 @@ foreach ( $types as $type)
             <!--Price-->
             <h3>Price*</h3>
             <div class="form-group">
-                <textarea class="form-control" style="font-size: large" rows="1" cols="" name="price" id="price"
-                          required></textarea>
+                <input type="number" class="form-control" style="font-size: large" rows="1" cols="" name="price" id="price" required >
                 <p id="userPara"></p>
             </div>
 

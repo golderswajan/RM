@@ -32,7 +32,8 @@ if (isset($_POST['add'])) {
     $name = $_POST['name'];
     $ingredients = $_POST['ing'];
     $price = $_POST['price'];
-    $query = "INSERT INTO foodmenu (id,name,foodimage,ingredients,price) VALUES('','$name','$image_up','$ingredients','$price');";
+    $type=$_POST['type'];
+    $query = "INSERT INTO foodmenu (id,name,foodimage,ingredients,price,type) VALUES('','$name','$image_up','$ingredients','$price','$type');";
     db_insert($query);
 }
 $query="select * from foodmenu";
@@ -95,13 +96,11 @@ if(isset($_GET['delete-id']))
     <?php foreach ($foods as $food): ?>
         <div class="col-lg-4 col-md-6 col-sm-6 clearfix tile">
 
-            <!--Faculty Member Start-->
-            <a href="./food-menu.php?id=<?php echo $food['id'] ?>">
                 <div>
                     <div class="">
                         <img src="<?= $food['foodimage'] ?>" class="img-responsive" alt="" style="text-align: center; " />
                     </div>
-                    <h2><?= $food['name'] ?> </h2>
+                    <a href="food-review.php"> <h2><?= $food['name'] ?> </h2></a>
                     <p><?= $food['price']?></p>
                     <a role="button" href="edit-food.php?id=<?=$food['id']?>"> Edit</a>
                     <a role="button" href="#" class="delete"
@@ -109,7 +108,6 @@ if(isset($_GET['delete-id']))
                         Delete
                     </a>
                 </div>
-            </a>
 
         </div>
     <?php endforeach; ?>
