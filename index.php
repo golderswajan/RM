@@ -5,6 +5,12 @@
  * Date: 10/7/2017
  * Time: 4:04 AM
  */
+require_once 'src/database.php';
+$breakfast = db_select("select * from foodmenu where type='breakfast' limit 0,3");
+$lunch = db_select("select * from foodmenu where type='lunch' limit 0,3");
+$snack = db_select("select * from foodmenu where type='snacks' limit 0,3");
+$dinner = db_select("select * from foodmenu where type='dinner' limit 0,3");
+$counter = 1;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -38,7 +44,7 @@
             <ul class="nav navbar-nav">
                 <li class="active"><a href="index.php">Home</a></li>
                 <li><a href="food-menu.php">Food Menu</a></li>
-                <li><a href="#">Order</a></li>
+                <li><a href="food-menu-order.php">Order</a></li>
                 <li><a href="#">About</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
@@ -141,6 +147,7 @@
             </div>
             <!--Welcome End-->
 
+<!--            Tab system starts-->
             <div class="col-md-5 col-lg-4 col-xs-11">
                 <br>
                 <ul class="nav nav-tabs nav-justified" style="background-color: #E3E3E3">
@@ -148,7 +155,7 @@
                         <a data-toggle="tab" href="#breakfast">Breakfast</a>
                     </li>
                     <li>
-                        <a data-toggle="tab" href="#launch">Launch</a>
+                        <a data-toggle="tab" href="#lunch">Lunch</a>
                     </li>
                     <li>
                         <a data-toggle="tab" href="#snacks">Snacks</a>
@@ -163,29 +170,19 @@
                     <!--Breakfast Start-->
                     <div id="breakfast" class="tab-pane fade in active">
                         <ul class="list-group">
-                            <li class="list-group-item row">
 
-                                <img src="images/pizza.jpg" alt="" class="img img-responsive col-xs-3 img-thumbnail">
-                                <a href="#" class="col-xs-9">
-                                    breakfast
+                            <?php foreach ($breakfast as $item){?>
+                            <li class="list-group-item row">
+                                <img src="<?= $item['foodimage']?>" alt="" class="img img-responsive col-xs-3 img-thumbnail">
+                                <a href="food-item?id="<?= $item['id']?> class="col-xs-9">
+                                    <?= $item['name']?>
                                 </a>
                             </li>
-                            <li class="list-group-item row">
+                            <?php } ?>
 
-                                <img src="images/pizza.jpg" class="img img-responsive col-xs-3 img-thumbnail">
-                                <a href="#">
-                                    breakfast
-                                </a>
-                            </li>
-                            <li class="list-group-item row">
 
-                                <img src="images/pizza.jpg" class="img img-responsive col-xs-3 img-thumbnail">
-                                <a href="#" class="col-xs-9">
-                                    breakfast
-                                </a>
-                            </li>
                             <li class="list-group-item row">
-                                <a href="#" class="btn btn-primary btn-lg pull-right">
+                                <a href="food-menu-public.php" class="btn btn-primary btn-lg pull-right">
                                     See all breakfast
                                 </a>
                             </li>
@@ -193,34 +190,20 @@
 
                     </div>
                     <!--Breakfast End-->
-                    <!--News End-->
 
                     <!--Launch Start-->
-                    <div id="launch" class="tab-pane fade">
+                    <div id="lunch" class="tab-pane fade">
                         <ul class="list-group">
+                            <?php foreach ($lunch as $item){?>
+                                <li class="list-group-item row">
+                                    <img src="<?= $item['foodimage']?>" alt="" class="img img-responsive col-xs-3 img-thumbnail">
+                                    <a href="food-item?id="<?= $item['id']?> class="col-xs-9">
+                                        <?= $item['name']?>
+                                    </a>
+                                </li>
+                            <?php } ?>
                             <li class="list-group-item row">
-
-                                <img src="images/pizza.jpg" alt="" class="img img-responsive col-xs-3 img-thumbnail">
-                                <a href="#" class="col-xs-9">
-                                    launch
-                                </a>
-                            </li>
-                            <li class="list-group-item row">
-
-                                <img src="images/pizza.jpg" class="img img-responsive col-xs-3 img-thumbnail">
-                                <a href="#">
-                                    launch
-                                </a>
-                            </li>
-                            <li class="list-group-item row">
-
-                                <img src="images/pizza.jpg" class="img img-responsive col-xs-3 img-thumbnail">
-                                <a href="#" class="col-xs-9">
-                                    launch
-                                </a>
-                            </li>
-                            <li class="list-group-item row">
-                                <a href="#" class="btn btn-primary btn-lg pull-right">
+                                <a href="food-menu-public.php" class="btn btn-primary btn-lg pull-right">
                                     See all launch
                                 </a>
                             </li>
@@ -232,29 +215,16 @@
                     <!--Snacks Start-->
                     <div id="snacks" class="tab-pane fade">
                         <ul class="list-group">
+                            <?php foreach ($snack as $item){?>
+                                <li class="list-group-item row">
+                                    <img src="<?= $item['foodimage']?>" alt="" class="img img-responsive col-xs-3 img-thumbnail">
+                                    <a href="food-item?id="<?= $item['id']?> class="col-xs-9">
+                                        <?= $item['name']?>
+                                    </a>
+                                </li>
+                            <?php } ?>
                             <li class="list-group-item row">
-
-                                <img src="images/pizza.jpg" alt="" class="img img-responsive col-xs-3 img-thumbnail">
-                                <a href="#" class="col-xs-9">
-                                    snacks
-                                </a>
-                            </li>
-                            <li class="list-group-item row">
-
-                                <img src="images/pizza.jpg" class="img img-responsive col-xs-3 img-thumbnail">
-                                <a href="#">
-                                    snacks
-                                </a>
-                            </li>
-                            <li class="list-group-item row">
-
-                                <img src="images/pizza.jpg" class="img img-responsive col-xs-3 img-thumbnail">
-                                <a href="#" class="col-xs-9">
-                                    snacks
-                                </a>
-                            </li>
-                            <li class="list-group-item row">
-                                <a href="#" class="btn btn-primary btn-lg pull-right">
+                                <a href="food-menu-public.php" class="btn btn-primary btn-lg pull-right">
                                     See all snacks
                                 </a>
                             </li>
@@ -266,29 +236,16 @@
                     <!--Dinner Start-->
                     <div id="dinner" class="tab-pane fade">
                         <ul class="list-group">
+                            <?php foreach ($dinner as $item){?>
+                                <li class="list-group-item row">
+                                    <img src="<?= $item['foodimage']?>" alt="" class="img img-responsive col-xs-3 img-thumbnail">
+                                    <a href="food-item?id="<?= $item['id']?> class="col-xs-9">
+                                        <?= $item['name']?>
+                                    </a>
+                                </li>
+                            <?php } ?>
                             <li class="list-group-item row">
-
-                                <img src="images/pizza.jpg" alt="" class="img img-responsive col-xs-3 img-thumbnail">
-                                <a href="#" class="col-xs-9">
-                                    dinner
-                                </a>
-                            </li>
-                            <li class="list-group-item row">
-
-                                <img src="images/pizza.jpg" class="img img-responsive col-xs-3 img-thumbnail">
-                                <a href="#">
-                                    dinner
-                                </a>
-                            </li>
-                            <li class="list-group-item row">
-
-                                <img src="images/pizza.jpg" class="img img-responsive col-xs-3 img-thumbnail">
-                                <a href="#" class="col-xs-9">
-                                    dinner
-                                </a>
-                            </li>
-                            <li class="list-group-item row">
-                                <a href="#" class="btn btn-primary btn-lg pull-right">
+                                <a href="food-menu-public.php" class="btn btn-primary btn-lg pull-right">
                                     See all dinners
                                 </a>
                             </li>
@@ -299,6 +256,7 @@
 
                 </div>
             </div>
+<!--            Tab system ends-->
 
         </div>
         <!--Welcome Part End-->

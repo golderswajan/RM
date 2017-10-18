@@ -7,7 +7,7 @@ include_once 'src/database.php';
 if (isset($_POST['log'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
-    echo $username.$password;
+    //echo $username.$password;
     $query = "SELECT name,password from customer WHERE name='$username' and password='$password';";
 
     $result = db_select($query);
@@ -22,7 +22,7 @@ if (isset($_POST['log'])) {
 //        header($address);
         //echo "yes";
     } else {
-        echo "Error";
+       // echo "Error";
     }
 
 
@@ -40,7 +40,7 @@ if (isset($_POST['log'])) {
         <div class="panel-body">
             <div class="col-md-6">
 
-                <form class="well-form-horizontal" action="Login-page.php" method="POST">
+                <form class="well-form-horizontal" style="margin-left: 45%;margin-right: -35%" action="Login-page.php" method="POST">
                     <div id="legend">
                         <legend class="">Login</legend>
                     </div>
@@ -50,14 +50,13 @@ if (isset($_POST['log'])) {
                             <input type="text" id="username" name="username" placeholder=""
                                    class="form-control input-lg">
                         </div>
-                    </div>
 
-                    <div class="box-input">
                         <label class="control-label" for="password">Password</label>
                         <div class="form-group">
                             <input type="password" id="password" name="password" placeholder=""
                                    class="form-control input-lg">
                         </div>
+                        <p><span style="color: red">Not yet registered?</span> <a href="Registration-page.php" style="text-decoration: none;color: #00CC00"> Register now.</a></p>
                     </div>
 
 

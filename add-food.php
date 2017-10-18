@@ -31,11 +31,6 @@ foreach ( $types as $type)
 
 
 
-        .image-preview-input-title {
-            margin-left: 2px;
-        }
-
-
     </style>
     <script>
 
