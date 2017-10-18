@@ -23,11 +23,6 @@ include_once 'src/database.php';
 
 
 
-        .image-preview-input-title {
-            margin-left: 2px;
-        }
-
-
     </style>
     <script>
 
