@@ -76,7 +76,7 @@ $dinner = db_select("select * from foodmenu where type='dinner'");
         <!--Launch Start-->
         <div id="lunch" class="tab-pane fade">
             <ul class="list-group">
-                <?php foreach ($breakfast as $item){?>
+                <?php foreach ($lunch as $item){?>
                     <li class="list-group-item row">
                         <div class="row">
                             <div class="col-lg-3"><img src="<?=$item['foodimage']?>" alt="" style="width: 100%;height: 120px" class="img img-responsive col-xs-3 img-thumbnail"></div>
@@ -98,7 +98,7 @@ $dinner = db_select("select * from foodmenu where type='dinner'");
         <!--Snacks Start-->
         <div id="snacks" class="tab-pane fade">
             <ul class="list-group">
-                <?php foreach ($breakfast as $item){?>
+                <?php foreach ($snack as $item){?>
                     <li class="list-group-item row">
                         <div class="row">
                             <div class="col-lg-3"><img src="<?=$item['foodimage']?>" alt="" style="width: 100%;height: 120px" class="img img-responsive col-xs-3 img-thumbnail"></div>
@@ -120,7 +120,7 @@ $dinner = db_select("select * from foodmenu where type='dinner'");
         <!--Dinner Start-->
         <div id="dinner" class="tab-pane fade">
             <ul class="list-group">
-                <?php foreach ($breakfast as $item){?>
+                <?php foreach ($dinner as $item){?>
                     <li class="list-group-item row">
                         <div class="row">
                             <div class="col-lg-3"><img src="<?=$item['foodimage']?>" alt="" style="width: 100%;height: 120px" class="img img-responsive col-xs-3 img-thumbnail"></div>

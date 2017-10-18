@@ -30,7 +30,7 @@ $types=db_select($sql);
 
     </script>
 
-    <form action="food-menu.php" id="form1" method="POST" enctype="multipart/form-data">
+    <form action="food-menu-admin.php" id="form1" method="POST" enctype="multipart/form-data">
 
         <h1>New Food Entry Form</h1>
 

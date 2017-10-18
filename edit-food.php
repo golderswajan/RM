@@ -24,7 +24,7 @@ $foods=db_select($query);
 </style>
 <div class="container">
 
-    <form action="food-menu.php?id=<?=$id ?>" id="form1" method="POST" enctype="multipart/form-data">
+    <form action="food-menu-admin.php?id=<?=$id ?>" id="form1" method="POST" enctype="multipart/form-data">
 
         <h1>Update Food Item</h1>
         <input type="hidden" name="category" value="update">

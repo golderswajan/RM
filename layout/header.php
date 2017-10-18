@@ -32,20 +32,33 @@
             </button>
             <a class="navbar-brand" href="#" style="color: #00CC00;font-size: 30px;font-family: 'Harlow Solid Italic'">WE HUNGRY</a>
         </div>
+        <?php
+        if(session_status()==PHP_SESSION_NONE){
+            session_start();
+        }
+        ?>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="index.php">Home</a></li>php
-                <li><a href="food-menu.php">Food Menu</a></li>
-                <li><a href="food-menu-order.php">Order</a></li>
-                <li><a href="#">About</a></li>
+                <li class="active"><a href="index.php">Home</a></li>
+                <li><a href="food-menu-public.php">Food Menu</a></li>
 
+                <?php
+                    if(isset($_SESSION['type'])){
+                    ?>
+
+                    <li><a href="food-menu-admin.php">Food Manage</a></li>
+
+                <?php
+                    }else {
+                        ?>
+
+                    <li><a href="food-menu-order.php">Order</a></li>
+
+                <?php }?>
+                <li><a href="#">About</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <?php
-                if(session_status()==PHP_SESSION_NONE){
-                    session_start();
-                }
-                ?>
+
                 <?php if(!isset($_SESSION['username'])){?>
                 <li><a href="Registration-page.php"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
                 <li><a href="Login-page.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>

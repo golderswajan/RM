@@ -258,7 +258,7 @@ $counter = 1;
             <!--Launch Start-->
             <div id="lunch" class="tab-pane fade">
                 <ul class="list-group">
-                    <?php foreach ($breakfast as $item){?>
+                    <?php foreach ($lunch as $item){?>
                         <li class="list-group-item row">
                             <div class="row">
                                 <div class="col-lg-3 col-md-3 col-sm-3"><img src="<?=$item['foodimage']?>" alt="" style="width: 100%;height: 120px" class="img img-responsive col-xs-3 img-thumbnail"></div>
@@ -286,7 +286,7 @@ $counter = 1;
             <!--Snacks Start-->
             <div id="snacks" class="tab-pane fade">
                 <ul class="list-group">
-                    <?php foreach ($breakfast as $item){?>
+                    <?php foreach ($snack as $item){?>
                         <li class="list-group-item row">
                             <div class="row">
                                 <div class="col-lg-3 col-md-3 col-sm-3"><img src="<?=$item['foodimage']?>" alt="" style="width: 100%;height: 120px" class="img img-responsive col-xs-3 img-thumbnail"></div>
@@ -314,7 +314,7 @@ $counter = 1;
             <!--Dinner Start-->
             <div id="dinner" class="tab-pane fade">
                 <ul class="list-group">
-                    <?php foreach ($breakfast as $item){?>
+                    <?php foreach ($dinner as $item){?>
                         <li class="list-group-item row">
                             <div class="row">
                                 <div class="col-lg-3 col-md-3 col-sm-3"><img src="<?=$item['foodimage']?>" alt="" style="width: 100%;height: 120px" class="img img-responsive col-xs-3 img-thumbnail"></div>
@@ -383,5 +383,5 @@ $counter = 1;
         <!--        Demo Ends-->
 
     </div>
-    <input type="button" class="btn btn-primary" onclick="calCulateCost()" style="margin-left: 40%" value="Calculate TotalCost">
+    <input type="button" class="btn btn-primary" onclick="confirm('Are you sure to request for the order')" style="margin-left: 40%" value="Confirm The Order">
 <?php include_once 'layout/footer.php';?>

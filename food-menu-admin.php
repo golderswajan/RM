@@ -53,7 +53,7 @@ if(isset($_GET['delete-id']))
 <script>
     function deleteRow(id) {
 
-        if(confirm('Are you sure to delete ?'))window.open('./food-menu.php?delete-id=' + id ,'_self');
+        if(confirm('Are you sure to delete ?'))window.open('./food-menu-admin.php?delete-id=' + id ,'_self');
     }
 </script>
 
