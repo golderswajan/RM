@@ -10,4 +10,4 @@ if(session_status()==PHP_SESSION_NONE){
 }
 unset($_SESSION['username']);
 if(isset($_SESSION['type'])) unset($_SESSION['type']);
-header('location: Login-page.php');
+header('location: login.php');

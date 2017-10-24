@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 17, 2017 at 11:16 PM
+-- Generation Time: Oct 25, 2017 at 11:04 AM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 7.0.13
 
@@ -28,9 +28,16 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `admins` (
   `id` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `pasword` varchar(255) NOT NULL
+  `username` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `admins`
+--
+
+INSERT INTO `admins` (`id`, `username`, `password`) VALUES
+(1, 'dreamless', '150214');
 
 -- --------------------------------------------------------
 
@@ -40,7 +47,8 @@ CREATE TABLE `admins` (
 
 CREATE TABLE `customer` (
   `id` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL,
+  `fullname` varchar(255) NOT NULL,
+  `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `address` text NOT NULL,
   `contact` varchar(255) NOT NULL
@@ -50,8 +58,9 @@ CREATE TABLE `customer` (
 -- Dumping data for table `customer`
 --
 
-INSERT INTO `customer` (`id`, `name`, `password`, `address`, `contact`) VALUES
-(1, 'Shuvo1233', '150233', 'Madaripur sadar', '019332');
+INSERT INTO `customer` (`id`, `fullname`, `username`, `password`, `address`, `contact`) VALUES
+(1, 'swajan golder', 'swajan', '150214', 'khulna', '01571777609'),
+(2, 'wahid shuvo', 'shuvo', '150233', 'madaripur', '01999626776');
 
 -- --------------------------------------------------------
 
@@ -80,6 +89,26 @@ CREATE TABLE `foodmenu` (
   `type` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `foodmenu`
+--
+
+INSERT INTO `foodmenu` (`id`, `name`, `foodimage`, `ingredients`, `price`, `type`) VALUES
+(1, 'Pizza', 'images/pizza.jpg', 'It is a delicious food made of chiken butter.jhjfdgghdvhvxhgvcghxvxhgvxhbvbxvvnbx sbvfnbxzvcnbx hgsdzfhgzdxvc ghsdfhgsdvf hgxvchxvhbxbv hdfgjhxdcvjhxv jhfdgbdvxv dhfgbvhxbvx hdsfjxbnxvbjhxv dfgjhvhbxjvb dshfgbxdbvxbv dzfbvjxznbcv dxhfvbjxdzv vfzhvb xfjkvhbxjhbv dfhgbjf sdfhgbsdf sdfgbshanf jhfgbhasnrbf vhsadrgfbasb f sdfnbvsfvbgbvajsaerhnsbfahf ', 50, 'breakfast'),
+(3, 'Burger', 'images/burger.jpg', 'jhghjgh', 100, 'breakfast'),
+(4, 'Swarma', './images/buy-1-get-1-free-on-your-first-food-order-1488879654.jpg', 'sdjfksjls', 150, 'Snacks'),
+(5, 'Chicken Grill', './images/images.jpg', 'shkfhossoeo', 400, 'Dinner'),
+(6, 'Noodles', './images/new-user-offer-flat-40-cashback-on-first-food-order-at-foodpanda-1483952952.jpg', 'ladjsldna', 300, 'Breakfast'),
+(7, 'Nugget', './images/front-3-1008x500.jpg', 'Kakwkrha', 130, 'Breakfast'),
+(8, 'Fried Rice', './images/friedricechikcken.jpg', 'hfhgdsf', 160, 'Lunch'),
+(9, 'Faluda', './images/faluda.jpg', 'abcdefgh', 60, 'Snacks'),
+(10, 'Donats', './images/donats.jpg', 'abcdefgh', 30, 'Snacks'),
+(11, 'Custard', './images/fruit-custard.jpg', 'bvabnva', 55, 'Lunch'),
+(12, 'Icecream', './images/icecream.jpeg', 'ice', 70, 'Dinner'),
+(13, 'Sandwitch', './images/sandwitch.jpg', 'fhfhhfgcgfd', 25, 'Lunch'),
+(14, 'Saslik', './images/saslik.jpg', 'ggshhgd', 35, 'Lunch'),
+(15, 'Chicken Biriany', './images/chettinad-chicken-biryani1.jpg', 'rice,meat', 150, 'Dinner');
+
 -- --------------------------------------------------------
 
 --
@@ -93,6 +122,16 @@ CREATE TABLE `orderitem` (
   `orderid` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `orderitem`
+--
+
+INSERT INTO `orderitem` (`id`, `foodid`, `amount`, `orderid`) VALUES
+(7, 6, 2, 6),
+(8, 1, 1, 7),
+(9, 7, 2, 7),
+(10, 6, 1, 8);
+
 -- --------------------------------------------------------
 
 --
@@ -101,12 +140,44 @@ CREATE TABLE `orderitem` (
 
 CREATE TABLE `orders` (
   `id` int(11) NOT NULL,
-  `orderdate` varchar(255) NOT NULL,
-  `delivarydate` varchar(255) NOT NULL,
-  `deliverytime` varchar(255) NOT NULL,
-  `confirmation` tinyint(1) NOT NULL,
+  `orderdate` date NOT NULL,
+  `delivarydate` date NOT NULL,
+  `delivarytime` time(6) NOT NULL,
+  `phoneno` int(11) NOT NULL,
+  `delivaryaddress` text NOT NULL,
+  `confirmation` tinyint(1) NOT NULL DEFAULT '0',
+  `validity` tinyint(1) DEFAULT '0',
+  `served` tinyint(1) NOT NULL DEFAULT '0',
+  `status` varchar(255) DEFAULT NULL,
   `customerid` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`id`, `orderdate`, `delivarydate`, `delivarytime`, `phoneno`, `delivaryaddress`, `confirmation`, `validity`, `served`, `status`, `customerid`) VALUES
+(6, '2017-10-23', '2017-10-26', '21:40:00.000000', 1747611697, 'sukdara', 1, 0, 1, 'Thank you very much', 1),
+(7, '2017-10-23', '2017-10-27', '14:40:00.000000', 1571777609, 'sukdara', 1, 1, 1, '', 1),
+(8, '2017-10-23', '2017-10-26', '05:04:00.000000', 1, 'jk', 0, 0, 0, 'please enter valid address and re order', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `practice`
+--
+
+CREATE TABLE `practice` (
+  `id` int(11) NOT NULL,
+  `time` time NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `practice`
+--
+
+INSERT INTO `practice` (`id`, `time`) VALUES
+(1, '03:00:00');
 
 -- --------------------------------------------------------
 
@@ -142,7 +213,8 @@ ALTER TABLE `admins`
 -- Indexes for table `customer`
 --
 ALTER TABLE `customer`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `username` (`username`);
 
 --
 -- Indexes for table `feedback`
@@ -174,6 +246,12 @@ ALTER TABLE `orders`
   ADD KEY `customerid` (`customerid`);
 
 --
+-- Indexes for table `practice`
+--
+ALTER TABLE `practice`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `type`
 --
 ALTER TABLE `type`
@@ -187,12 +265,12 @@ ALTER TABLE `type`
 -- AUTO_INCREMENT for table `admins`
 --
 ALTER TABLE `admins`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `feedback`
 --
@@ -202,17 +280,22 @@ ALTER TABLE `feedback`
 -- AUTO_INCREMENT for table `foodmenu`
 --
 ALTER TABLE `foodmenu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 --
 -- AUTO_INCREMENT for table `orderitem`
 --
 ALTER TABLE `orderitem`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+--
+-- AUTO_INCREMENT for table `practice`
+--
+ALTER TABLE `practice`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- Constraints for dumped tables
 --

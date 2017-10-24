@@ -43,10 +43,11 @@
                 <li><a href="food-menu-public.php">Food Menu</a></li>
 
                 <?php
-                    if(isset($_SESSION['type'])){
+                    if(isset($_SESSION['type'])&&!strcmp($_SESSION['type'],'admin')){
                     ?>
 
                     <li><a href="food-menu-admin.php">Food Manage</a></li>
+                        <li><a href="order-admin.php">Order Manage</a></li>
 
                 <?php
                     }else {
@@ -60,11 +61,11 @@
             <ul class="nav navbar-nav navbar-right">
 
                 <?php if(!isset($_SESSION['username'])){?>
-                <li><a href="Registration-page.php"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                <li><a href="Login-page.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                <li><a href="registration.php"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                <li><a href="login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
                 <?php }else{?>
                 <li><a href="user-page.php"><span class="glyphicon glyphicon-user"></span><span style="color: #00CC00;"><?= $_SESSION['username']?></span></a></li>
-                <li><a href="log-out.php"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+                <li><a href="logout.php"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
                 <?php }?>
             </ul>
         </div>
