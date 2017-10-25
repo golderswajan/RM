@@ -89,6 +89,8 @@ $counter = 1;
     $(document).ready(function(){
         $("form").submit(function(e){
             if(confirm('Are you sure to order?')){
+
+            }else{
                 e.preventDefault(e);
             }
         });

@@ -92,7 +92,7 @@ $counter = 1;
             <div class="carousel-inner" style="">
 
                 <div class="item active">
-                    <img src="images/intro-bg.jpg" alt="Los Angeles" style="width:100%;height: 500px;">
+                    <img src="images/intro-bg.jpg" alt="Los Angeles" style="width:100%;height: 350px;">
                     <div class="carousel-caption">
                         <h3>Our  Decoration</h3>
                         <p>This confirms your delightness.</p>
@@ -100,7 +100,7 @@ $counter = 1;
                 </div>
 
                 <div class="item">
-                    <img src="images/gallery-bg.jpg" alt="Chicago" style="width:100%;height: 500px;">
+                    <img src="images/gallery-bg.jpg" alt="Chicago" style="width:100%;height: 350px;">
                     <div class="carousel-caption">
                         <h3>Our Gorgeous furnisher</h3>
                         <p>This confirms your 100% comfort.</p>
@@ -108,14 +108,14 @@ $counter = 1;
                 </div>
 
                 <div class="item">
-                    <img src="images/burger.jpg" alt="New York" style="width:100%;height: 500px;">
+                    <img src="images/burger.jpg" alt="New York" style="width:100%;height: 350px;">
                     <div class="carousel-caption">
                         <h3>Yammy Burger</h3>
                         <p>You must love her</p>
                     </div>
                 </div>
                 <div class="item">
-                    <img src="images/pizza.jpg" alt="New York" style="width:100%;height: 500px;">
+                    <img src="images/pizza.jpg" alt="New York" style="width:100%;height: 350px;">
                     <div class="carousel-caption">
                         <h3>Delicious Pizza</h3>
                         <p>This 100% satisfies your taste.</p>

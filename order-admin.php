@@ -217,8 +217,8 @@ include_once 'layout/header.php';
                 if(order.validity==1)$('#validate'+(i+1)).prop({'checked':true,'disabled':true});
                 if(order.confirmation==1)$('#receive'+(i+1)).prop({'checked':true,"disabled":true});
                 if(order.served==1)$('#serve'+(i+1)).prop({'checked':true,'disabled':true});
-                if(order.validity==0 && order.confirmation==0 && order.served==0) $('#row'+(i+1)).css({"background-color":"#FF6666"});
-                if(order.validity==1 && order.confirmation==1 && order.served==1) $('#row'+(i+1)).css({"background-color":"#33CC33"});
+                if(order.validity==0 && order.confirmation==0 && order.served==0) $('#row'+(i+1)).css({"background-color":"#CC9999"});
+                if(order.validity==1 && order.confirmation==1 && order.served==1) $('#row'+(i+1)).css({"background-color":"#66CC66"});
             }
 
 
