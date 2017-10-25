@@ -15,7 +15,7 @@ if (isset($_POST['log'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
     //echo $username.$password;
-    $query = "SELECT name,password from admins WHERE name='$username' and password='$password';";
+    $query = "SELECT username from admins WHERE username='$username' and password='$password';";
     echo $query;
     $result = db_select($query);
     echo $result[0]['id'];
@@ -49,7 +49,7 @@ if (isset($_POST['log'])) {
         <div class="panel-body">
             <div class="col-md-6">
 
-                <form class="well-form-horizontal" style="margin-left: 45%;margin-right: -35%" action="admin-log-in.php" method="POST">
+                <form class="well-form-horizontal" style="margin-left: 45%;margin-right: -35%" action="admin-login.php" method="POST">
                     <div id="legend">
                         <legend class="">Login</legend>
                     </div>
@@ -65,7 +65,7 @@ if (isset($_POST['log'])) {
                             <input type="password" id="password" name="password" placeholder=""
                                    class="form-control input-lg">
                         </div>
-                        <p><span style="color: red">Not yet registered?</span> <a href="Registration-page.php" style="text-decoration: none;color: #00CC00"> Register now.</a></p>
+                        <p><span style="color: red">Not yet registered?</span> <a href="registration.php" style="text-decoration: none;color: #00CC00"> Register now.</a></p>
                     </div>
 
 

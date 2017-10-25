@@ -46,6 +46,25 @@ function db_connect(){
 
 
 }
+function db_insert_orders($orderDate,$delivaryDate,$delivaryTime,$phoneno,$delivaryAddress,$confirmation=0){
+    sessionStart();
+    $query  =  "INSERT INTO `orders` (`id`, `orderdate`, `delivarydate`, `delivarytime`, `phoneno`, `delivaryaddress`, `confirmation`, `customerid`) ";
+    $query .= "select 'NULL', '".$orderDate."', '".$delivaryDate."', '".$delivaryTime."', '".$phoneno."', '".$delivaryAddress."', '".$confirmation."', id from customer where username='".$_SESSION['username']."';";
+    db_insert($query);
+
+}
+function db_insert_orderitem($foodId,$amount){
+    sessionStart();
+    $query = "INSERT INTO `orderitem` (`id`, `foodid`, `amount`, `orderid`) ";
+    $query .= "select 'NULL', '".$foodId."', '".$amount."', orders.id from orders,customer where customer.id=orders.customerid && customer.username='".$_SESSION['username']."' ";
+    $query .= "order by orders.id desc limit 1;";
+    db_insert($query);
+}
+function sessionStart(){
+    if(session_status()==PHP_SESSION_NONE){
+        sessionStart();
+    }
+}
 
 
 

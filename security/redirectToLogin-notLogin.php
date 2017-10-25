@@ -9,5 +9,5 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 if(!isset($_SESSION['username'])){
-    header('location: Login-page.php');
+    header('location: login.php');
 }
