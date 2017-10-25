@@ -100,7 +100,7 @@ if(isset($_GET['delete-id']))
                     <div class="">
                         <img src="<?= $food['foodimage'] ?>" class="img-responsive" alt="" style="text-align: center; " />
                     </div>
-                    <a href="food-review.php"> <h2><?= $food['name'] ?> </h2></a>
+                    <a href="food-review.php?food-id=<?=$food['id']?>"> <h2><?= $food['name'] ?> </h2></a>
                     <p><?= $food['price']?></p>
                     <a role="button" href="edit-food.php?id=<?=$food['id']?>"> Edit</a>
                     <a role="button" href="#" class="delete"

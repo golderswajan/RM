@@ -103,7 +103,7 @@ $dinner = db_select("select * from foodmenu where type='dinner'");
                         <div class="row">
                             <div class="col-lg-3"><img src="<?=$item['foodimage']?>" alt="" style="width: 100%;height: 120px" class="img img-responsive col-xs-3 img-thumbnail"></div>
                             <div class="col-lg-8">
-                                <a href="#" class="col-xs-9" style="text-decoration: none">
+                                <a href=""# class="col-xs-9" style="text-decoration: none">
                                     <h2><?= $item['name']?></h2>
                                     <h4>Price : <?= $item['price']?> tk</h4>
                                     <h5><?= substr($item['ingredients'],0,100)?></h5>
