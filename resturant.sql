@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 25, 2017 at 11:04 AM
+-- Generation Time: Oct 26, 2017 at 05:09 AM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 7.0.13
 
@@ -37,7 +37,8 @@ CREATE TABLE `admins` (
 --
 
 INSERT INTO `admins` (`id`, `username`, `password`) VALUES
-(1, 'dreamless', '150214');
+(1, 'dreamless', '150214'),
+(2, 'abcd', '1234');
 
 -- --------------------------------------------------------
 
@@ -71,8 +72,20 @@ INSERT INTO `customer` (`id`, `fullname`, `username`, `password`, `address`, `co
 CREATE TABLE `feedback` (
   `id` int(11) NOT NULL,
   `comment` text NOT NULL,
-  `customerid` int(11) NOT NULL
+  `customerid` int(11) NOT NULL,
+  `foodid` int(11) NOT NULL,
+  `date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `feedback`
+--
+
+INSERT INTO `feedback` (`id`, `comment`, `customerid`, `foodid`, `date`) VALUES
+(3, 'Good', 1, 1, '2017-10-28'),
+(6, 'it is good', 1, 4, '2017-10-26'),
+(7, 'it is good', 1, 3, '2017-10-26'),
+(8, 'it is delicious', 1, 3, '2017-10-26');
 
 -- --------------------------------------------------------
 
@@ -130,7 +143,15 @@ INSERT INTO `orderitem` (`id`, `foodid`, `amount`, `orderid`) VALUES
 (7, 6, 2, 6),
 (8, 1, 1, 7),
 (9, 7, 2, 7),
-(10, 6, 1, 8);
+(10, 6, 1, 8),
+(11, 3, 1, 9),
+(12, 7, 1, 9),
+(13, 9, 1, 10),
+(14, 15, 2, 10),
+(15, 4, 1, 11),
+(16, 10, 1, 11),
+(17, 12, 2, 12),
+(18, 15, 1, 12);
 
 -- --------------------------------------------------------
 
@@ -148,7 +169,7 @@ CREATE TABLE `orders` (
   `confirmation` tinyint(1) NOT NULL DEFAULT '0',
   `validity` tinyint(1) DEFAULT '0',
   `served` tinyint(1) NOT NULL DEFAULT '0',
-  `status` varchar(255) DEFAULT NULL,
+  `status` varchar(255) DEFAULT '',
   `customerid` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -159,25 +180,11 @@ CREATE TABLE `orders` (
 INSERT INTO `orders` (`id`, `orderdate`, `delivarydate`, `delivarytime`, `phoneno`, `delivaryaddress`, `confirmation`, `validity`, `served`, `status`, `customerid`) VALUES
 (6, '2017-10-23', '2017-10-26', '21:40:00.000000', 1747611697, 'sukdara', 1, 0, 1, 'Thank you very much', 1),
 (7, '2017-10-23', '2017-10-27', '14:40:00.000000', 1571777609, 'sukdara', 1, 1, 1, '', 1),
-(8, '2017-10-23', '2017-10-26', '05:04:00.000000', 1, 'jk', 0, 0, 0, 'please enter valid address and re order', 1);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `practice`
---
-
-CREATE TABLE `practice` (
-  `id` int(11) NOT NULL,
-  `time` time NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `practice`
---
-
-INSERT INTO `practice` (`id`, `time`) VALUES
-(1, '03:00:00');
+(8, '2017-10-23', '2017-10-26', '05:04:00.000000', 1, 'jk', 1, 0, 0, 'please enter valid address and re order', 1),
+(9, '2017-10-25', '2017-10-25', '17:50:00.000000', 1935696971, 'Dumuria', 1, 1, 0, 'We will contact with you in no time', 2),
+(10, '2017-10-25', '2017-10-27', '04:05:00.000000', 1717728721, 'Rajshahi', 0, 1, 0, '', 2),
+(11, '2017-10-25', '2017-10-28', '17:06:00.000000', 1999626776, 'Dhaka', 1, 0, 0, '', 2),
+(12, '2017-10-25', '2017-10-28', '17:30:00.000000', 1999626776, 'Khulna univarsity', 1, 1, 0, 'We will contact with you in no time.', 1);
 
 -- --------------------------------------------------------
 
@@ -221,7 +228,8 @@ ALTER TABLE `customer`
 --
 ALTER TABLE `feedback`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `customerid` (`customerid`);
+  ADD KEY `customerid` (`customerid`),
+  ADD KEY `foodid` (`foodid`);
 
 --
 -- Indexes for table `foodmenu`
@@ -246,12 +254,6 @@ ALTER TABLE `orders`
   ADD KEY `customerid` (`customerid`);
 
 --
--- Indexes for table `practice`
---
-ALTER TABLE `practice`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `type`
 --
 ALTER TABLE `type`
@@ -265,7 +267,7 @@ ALTER TABLE `type`
 -- AUTO_INCREMENT for table `admins`
 --
 ALTER TABLE `admins`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `customer`
 --
@@ -275,7 +277,7 @@ ALTER TABLE `customer`
 -- AUTO_INCREMENT for table `feedback`
 --
 ALTER TABLE `feedback`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `foodmenu`
 --
@@ -285,17 +287,12 @@ ALTER TABLE `foodmenu`
 -- AUTO_INCREMENT for table `orderitem`
 --
 ALTER TABLE `orderitem`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
---
--- AUTO_INCREMENT for table `practice`
---
-ALTER TABLE `practice`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- Constraints for dumped tables
 --
@@ -304,7 +301,8 @@ ALTER TABLE `practice`
 -- Constraints for table `feedback`
 --
 ALTER TABLE `feedback`
-  ADD CONSTRAINT `feedback_ibfk_1` FOREIGN KEY (`customerid`) REFERENCES `customer` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `feedback_ibfk_1` FOREIGN KEY (`customerid`) REFERENCES `customer` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `feedback_ibfk_2` FOREIGN KEY (`foodid`) REFERENCES `foodmenu` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `foodmenu`

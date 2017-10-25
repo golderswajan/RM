@@ -1,26 +1,30 @@
 <?php include_once 'layout/header.php';
+require_once 'security/redirectToLogin-notLogin.php';
 require_once 'src/database.php';
 $name=$_SESSION['username'];
 
-$sqlid="select id from customer WHERE name='$name'";
+$sqlid="select id from customer WHERE username='$name'";
 $res=db_select($sqlid);
 $id=$res[0]['id'];
 
 if(isset($_POST['update']))
 {
     $upName=$_POST['name'];
-    $upPass=$_POST['pass'];
+//    $upPass=$_POST['pass'];
     $upAdd=$_POST['addr'];
     $upContact=$_POST['cont'];
 
-    $sql="update customer set name='$upName',password='$upPass',address='$upAdd',contact='$upContact' where id='$id'";
+    $sql="update customer set fullname='$upName',address='$upAdd',contact='$upContact' where id='$id'";
     db_update($sql);
+    $address = "Location: refresh.php?address=".$_SERVER['PHP_SELF'];
+    header($address);
 }
 
 
-$query="select password,address,contact from customer WHERE  name='$name'";
+$query="select fullname,address,contact from customer WHERE  username='$name'";
 $result=db_select($query);
-$pass=$result[0]['password'];
+$fullname = $result[0]['fullname'];
+//$pass=$result[0]['password'];
 $add=$result[0]['address'];
 $contact=$result[0]['contact'];
 
@@ -51,8 +55,8 @@ $contact=$result[0]['contact'];
             <ul class="list-group">
                 <div class="container">
                     <div class="col-md-12" style="background-color:lavender";>
-                        <h3>Name: <span class="label label-info"><?= $name?></span></h3>
-                        <h3>Password: <span class="label label-info"><?= $pass?></span></h3>
+                        <h3>Name: <span class="label label-info"><?= $fullname?></span></h3>
+<!--                        <h3>Password: <span class="label label-info">--><?//= $pass?><!--</span></h3>-->
                         <h3>Address: <span class="label label-info"><?= $add?></span></h3>
                         <h3>Contact: <span class="label label-info"><?= $contact?></span></h3>
                     </div>
@@ -75,17 +79,17 @@ $contact=$result[0]['contact'];
                                         <label class="control-label" for="username">Name</label>
                                         <div class="form-group">
                                             <input type="text" id="username" name="name"
-                                                   class="form-control input-lg" value="<?=$name?>" >
+                                                   class="form-control input-lg" value="<?=$fullname?>" >
                                         </div>
                                     </div>
 
-                                    <div class="box-input">
-                                        <label class="control-label" for="password">Password</label>
-                                        <div class="form-group">
-                                            <input type="password" id="password" name="pass" placeholder=""
-                                                   class="form-control input-lg" value="<?=$pass?>">
-                                        </div>
-                                    </div>
+<!--                                    <div class="box-input">-->
+<!--                                        <label class="control-label" for="password">Password</label>-->
+<!--                                        <div class="form-group">-->
+<!--                                            <input type="password" id="password" name="pass" placeholder=""-->
+<!--                                                   class="form-control input-lg" value="--><?//=$pass?><!--">-->
+<!--                                        </div>-->
+<!--                                    </div>-->
 
                                     <div class="box-input">
                                         <label class="control-label" >Address</label>

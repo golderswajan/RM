@@ -54,8 +54,11 @@
                         ?>
 
                     <li><a href="food-menu-order.php">Order</a></li>
-
+                        <?php if(isset($_SESSION['type'])&&!strcmp($_SESSION['type'],'customer')){?>
+                            <li><a href="order-customer.php">Order List</a></li>
+                            <?php }?>
                 <?php }?>
+
                 <li><a href="#">About</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">

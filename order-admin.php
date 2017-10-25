@@ -208,17 +208,17 @@ include_once 'layout/header.php';
                     "                <td>"+order.orderdate+"</td>\n" +
                     "                <td>"+order.delivarydate+"</td>\n" +
                     "                <td>"+order.delivarytime+"</td>\n" +
-                    "                <td><input type=\"checkbox\" id='validate"+(i+1)+"' onchange=\"validate(this,"+order.id+")\"></td>\n" +
-                    "                <td><input type=\"checkbox\" id='receive"+(i+1)+"' onchange=\"receive(this,"+order.id+")\"></td>\n" +
-                    "                <td><input type=\"checkbox\" id='serve"+(i+1)+"' onchange=\"serve(this,"+order.id+")\"></td>\n" +
+                    "                <td><input type=\"checkbox\" id='validate"+(i+1)+"' onchange=\"validate(this,"+order.id+","+(i+1)+")\"></td>\n" +
+                    "                <td><input type=\"checkbox\" id='receive"+(i+1)+"' onchange=\"receive(this,"+order.id+","+(i+1)+")\"></td>\n" +
+                    "                <td><input type=\"checkbox\" id='serve"+(i+1)+"' onchange=\"serve(this,"+order.id+")\","+(i+1)+"></td>\n" +
                     "                <td onclick=\"modalActivateOrderDetail("+order.id+")\">Show</td>\n" +
                     "                <td onclick=\"deleteOrder("+order.id+","+(i+1)+")\">Delete</td>\n" +
                     "            </tr>");
                 if(order.validity==1)$('#validate'+(i+1)).prop({'checked':true,'disabled':true});
                 if(order.confirmation==1)$('#receive'+(i+1)).prop({'checked':true,"disabled":true});
                 if(order.served==1)$('#serve'+(i+1)).prop({'checked':true,'disabled':true});
-                if(order.validity==0 && order.confirmation==0 && order.served==0) $('#row'+(i+1)).css({"background-color":"#FF6666"});
-                if(order.validity==1 && order.confirmation==1 && order.served==1) $('#row'+(i+1)).css({"background-color":"#33CC33"});
+                if(order.confirmation==0) $('#row'+(i+1)).css({"background-color":"#CC9999"});
+                //if(order.validity==1 && order.confirmation==1 && order.served==1) $('#row'+(i+1)).css({"background-color":"#66CC66"});
             }
 
 
@@ -262,19 +262,21 @@ include_once 'layout/header.php';
         infoModalActivate(userName);
         console.log(userName);
     }
-    function validate(cbox,orderId){
+    function validate(cbox,orderId,rowId){
         if(confirm('Are You Sure?')){
             $.post('jquery-process.php',{validate:"validate",validateOrderId:orderId});
             $('#'+cbox.id).prop({'disabled':true});
         }else  $('#'+cbox.id).prop({'checked':false});
     }
-    function receive(cbox,orderId){
+    function receive(cbox,orderId,rowId){
         if(confirm('Are You Sure?')){
             $.post('jquery-process.php',{receive:"receive",receiveOrderId:orderId});
             $('#'+cbox.id).prop({'disabled':true});
+            $('#row'+rowId).css({"background-color":""});
+            console.log(rowId);
         }else  $('#'+cbox.id).prop({'checked':false});
     }
-    function serve(cbox,orderId){
+    function serve(cbox,orderId,rowId){
         if(confirm('Are You Sure?')){
             $.post('jquery-process.php',{serve:"serve",serveOrderId:orderId});
             $('#'+cbox.id).prop({'disabled':true});

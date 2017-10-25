@@ -51,16 +51,20 @@ $counter = 1;
                 <li><a href="food-menu-public.php">Food Menu</a></li>
 
                 <?php
-                    if(isset($_SESSION['type'])&&!strcmp($_SESSION['type'],'admin')){
+                if(isset($_SESSION['type'])&&!strcmp($_SESSION['type'],'admin')){
                     ?>
 
-                <li><a href="food-menu-admin.php">Food Manage</a></li>
-                <li><a href="order-admin.php">Order Manage</a></li>
+                    <li><a href="food-menu-admin.php">Food Manage</a></li>
+                    <li><a href="order-admin.php">Order Manage</a></li>
 
-                <?php }else {?>
+                    <?php
+                }else {
+                    ?>
 
-                <li><a href="food-menu-order.php">Order</a></li>
-
+                    <li><a href="food-menu-order.php">Order</a></li>
+                    <?php if(isset($_SESSION['type'])&&!strcmp($_SESSION['type'],'customer')){?>
+                        <li><a href="order-customer.php">Order List</a></li>
+                    <?php }?>
                 <?php }?>
                 <li><a href="#">About</a></li>
             </ul>
@@ -92,7 +96,7 @@ $counter = 1;
             <div class="carousel-inner" style="">
 
                 <div class="item active">
-                    <img src="images/intro-bg.jpg" alt="Los Angeles" style="width:100%;height: 500px;">
+                    <img src="images/intro-bg.jpg" alt="Los Angeles" style="width:100%;height: 350px;">
                     <div class="carousel-caption">
                         <h3>Our  Decoration</h3>
                         <p>This confirms your delightness.</p>
@@ -100,7 +104,7 @@ $counter = 1;
                 </div>
 
                 <div class="item">
-                    <img src="images/gallery-bg.jpg" alt="Chicago" style="width:100%;height: 500px;">
+                    <img src="images/gallery-bg.jpg" alt="Chicago" style="width:100%;height: 350px;">
                     <div class="carousel-caption">
                         <h3>Our Gorgeous furnisher</h3>
                         <p>This confirms your 100% comfort.</p>
@@ -108,14 +112,14 @@ $counter = 1;
                 </div>
 
                 <div class="item">
-                    <img src="images/burger.jpg" alt="New York" style="width:100%;height: 500px;">
+                    <img src="images/burger.jpg" alt="New York" style="width:100%;height: 350px;">
                     <div class="carousel-caption">
                         <h3>Yammy Burger</h3>
                         <p>You must love her</p>
                     </div>
                 </div>
                 <div class="item">
-                    <img src="images/pizza.jpg" alt="New York" style="width:100%;height: 500px;">
+                    <img src="images/pizza.jpg" alt="New York" style="width:100%;height: 350px;">
                     <div class="carousel-caption">
                         <h3>Delicious Pizza</h3>
                         <p>This 100% satisfies your taste.</p>

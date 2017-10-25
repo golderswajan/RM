@@ -1,25 +1,22 @@
 <?php
 include_once 'layout/header.php';
 require_once 'src/database.php';
-$name=$_SESSION['username'];
-$query="SELECT id from customer WHERE name='$name';";
-$result=db_select($query);
-$customer_id=$result[0]['id'];
 
+$foodId=$_GET['foodId'];
 if(isset($_POST['post']))
 {
     $comment=$_POST['comment'];
-    $query="INSERT INTO `feedback` (`id`, `comment`, `customerid`) VALUES ('', '$comment', '$customer_id');";
+    $query="INSERT INTO `feedback` (`id`, `comment`, `customerid`, `foodid`, `date`) select 'NULL', '".$comment."', id, '".$foodId."', '".date("Y-m-d")."' from customer where username='".$_SESSION['username']."';";
 
     db_insert($query);
     $address = "Location: refresh.php?address=".$_SERVER['PHP_SELF'];
-    header($address.'?food-id='."2");
+    header($address.'?foodId='.$foodId);
 
 }
-$id=$_GET['food-id'];
-$query="select name,ingredients,price,foodimage from foodmenu WHERE id='$id'";
+
+$query="select name,ingredients,price,foodimage from foodmenu WHERE id='".$foodId."'";
 $foods=db_select($query);
-$query="SELECT name,comment from customer,feedback WHERE feedback.customerid=customer.id;";
+$query="select feedback.id,comment,customer.fullname,date from feedback,customer where foodid='".$foodId."' and feedback.customerid=customer.id";
 $output=db_select($query);
 
 
@@ -89,35 +86,62 @@ if(session_status()==PHP_SESSION_NONE){
         color:white;
         text-align:left;
     }
+    a{
+        cursor: pointer;
+    }
 
 </style>
+<script>
+    function deleteFood(foodId,deleteComntId){
+        if(confirm('sure to delete the comment')){
+            $.post('jquery-process.php',{deleteComntId:deleteComntId},function(data){
+                window.location.href = 'food-review.php?foodId='+foodId;
+            });
+
+        }
+    }
+</script>
+
 <div class="">
 
-    <form action="food-review.php?food-id=2" id="form1" method="POST"   enctype="multipart/form-data">
+    <form action="food-review.php?foodId=<?= $foodId ?>" id="form1" method="POST"   enctype="multipart/form-data">
 
-        <input type="hidden" name="category" value="update">
        <div class="col-md-offset-1">
            <img src="<?=$foods[0]['foodimage']?>" class="img-responsive" >
-           <h1>Ingredients: <?= $foods[0]['ingredients']?></h1>
-           <h1>Price: <?= $foods[0]['price']?> Tk</h1>
+           <h1>Name: <?= $foods[0]['name']?></h1>
+           <h2>Ingredients: <?= $foods[0]['ingredients']?></h2>
+           <h3 style=" color:#009486;">Price: <?= $foods[0]['price']?> Tk</h3>
 
            <?php foreach ($output as $item):?>
                <div class="col-md-offset-3">
                    <div class="comment_div">
-                       <p class="name">Posted By: <?php echo $item['name'];?></p>
+                       <p class="name">
+                           <span> Posted By: <?php echo $item['fullname'];?></span>
+
+                           <?php if(isset($_SESSION['username'])&& !strcmp($_SESSION['type'],'admin')){?>
+                           <a onclick="deleteFood('<?= $foodId?>',<?= $item['id']?>)" class="pull-right" title="Delete">
+                               <span class="glyphicon glyphicon-remove" style="color: brown"></span>
+                           </a>
+                           <?php } ?>
+
+                       </p>
                        <p class="comment"><?php echo $item['comment'];?></p>
-                       <p class="time"><?php echo  date("Y.m.d")?></p>
+                       <p class="time">Date: <?php echo  $item['date']?></p>
                    </div>
                </div>
            <?php endforeach; ?>
+           <?php if(!isset($_SESSION['username'])){?>
+           <span style="color: #1B6D85">Please Register and Log in to comment .</span>
+           <?php }?>
        </div>
 
-
-            <div class="col-md-offset-1">
+        <?php if(isset($_SESSION['username'])&&!strcmp($_SESSION['type'],'customer')){?>
+            <div style="margin-left: 7%">
                 <textarea id="comment" name="comment" placeholder="Write Your Comment Here....." required></textarea>
                 <br>
                 <input type="submit" name="post" value="Post Comment" class="btn btn-success">
             </div>
+        <?php }?>
 
     </form>
 </div>
