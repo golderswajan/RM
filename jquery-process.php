@@ -19,6 +19,8 @@ $deleteOrderId = isset($_POST['deleteOrderId'])?$_POST['deleteOrderId']:null;
 $status = isset($_POST['status'])?$_POST['status']:null;
 $statusOrderId = isset($_POST['statusOrderId'])?$_POST['statusOrderId']:null;
 $userName = isset($_POST['userName'])?$_POST['userName']:null;
+$deleteComntId = isset($_POST['deleteComntId'])?$_POST['deleteComntId']:null;
+
 
 
 
@@ -81,10 +83,18 @@ else if($status!=null && !empty($status) && $statusOrderId!=null && !empty($stat
     db_update($query);
 }
 //retreiving user detail according to user name
+//from order admin page
 else if($userName!=null && !empty($userName)){
     $query = "SELECT fullname,address,contact from `customer` WHERE username='".$userName."';";
     $detail =db_select($query);
     echo json_encode($detail);
+}
+//delete the comment
+//from food-review page
+else if($deleteComntId!=null && !empty($deleteComntId)){
+    $query = "delete from feedback where id='".$deleteComntId."'";
+    db_delete($query);
+
 }
 
 

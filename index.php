@@ -51,16 +51,20 @@ $counter = 1;
                 <li><a href="food-menu-public.php">Food Menu</a></li>
 
                 <?php
-                    if(isset($_SESSION['type'])&&!strcmp($_SESSION['type'],'admin')){
+                if(isset($_SESSION['type'])&&!strcmp($_SESSION['type'],'admin')){
                     ?>
 
-                <li><a href="food-menu-admin.php">Food Manage</a></li>
-                <li><a href="order-admin.php">Order Manage</a></li>
+                    <li><a href="food-menu-admin.php">Food Manage</a></li>
+                    <li><a href="order-admin.php">Order Manage</a></li>
 
-                <?php }else {?>
+                    <?php
+                }else {
+                    ?>
 
-                <li><a href="food-menu-order.php">Order</a></li>
-
+                    <li><a href="food-menu-order.php">Order</a></li>
+                    <?php if(isset($_SESSION['type'])&&!strcmp($_SESSION['type'],'customer')){?>
+                        <li><a href="order-customer.php">Order List</a></li>
+                    <?php }?>
                 <?php }?>
                 <li><a href="#">About</a></li>
             </ul>

@@ -386,7 +386,7 @@ $counter = 1;
                                 <div class="col-lg-3 col-md-3 col-sm-3"><img src="<?=$item['foodimage']?>" alt="" style="width: 100%;height: 120px" class="img img-responsive col-xs-3 img-thumbnail"></div>
                                 <div class="col-lg-8 col-md-8 col-sm-8">
                                     <input type="text" id="primaryKey<?= $counter?>" value="<?= $item['id']?>" placeholder="primary key" hidden>
-                                    <a href="#" class="col-xs-9" style="text-decoration: none;text-justify: auto">
+                                    <a href="food-review.php?foodId=<?= $item['id']?>" class="col-xs-9" style="text-decoration: none;text-justify: auto">
                                         <h2><?= $item['name']?></h2>
                                         <h4>Price : <?= $item['price']?> tk</h4>
                                         <h5><?= substr($item['ingredients'],0,100)?></h5>
@@ -414,7 +414,7 @@ $counter = 1;
                                 <div class="col-lg-3 col-md-3 col-sm-3"><img src="<?=$item['foodimage']?>" alt="" style="width: 100%;height: 120px" class="img img-responsive col-xs-3 img-thumbnail"></div>
                                 <div class="col-lg-8 col-md-8 col-sm-8">
                                     <input type="text" id="primaryKey<?= $counter?>" value="<?= $item['id']?>" placeholder="primary key" hidden>
-                                    <a href="#" class="col-xs-9" style="text-decoration: none;text-justify: auto">
+                                    <a href="food-review.php?foodId=<?= $item['id']?>" class="col-xs-9" style="text-decoration: none;text-justify: auto">
                                         <h2><?= $item['name']?></h2>
                                         <h4>Price : <?= $item['price']?> tk</h4>
                                         <h5><?= substr($item['ingredients'],0,100)?></h5>
@@ -442,7 +442,7 @@ $counter = 1;
                                 <div class="col-lg-3 col-md-3 col-sm-3"><img src="<?=$item['foodimage']?>" alt="" style="width: 100%;height: 120px" class="img img-responsive col-xs-3 img-thumbnail"></div>
                                 <div class="col-lg-8 col-md-8 col-sm-8">
                                     <input type="text" id="primaryKey<?= $counter?>" value="<?= $item['id']?>" placeholder="primary key" hidden>
-                                    <a href="#" class="col-xs-9" style="text-decoration: none;text-justify: auto">
+                                    <a href="food-review.php?foodId=<?= $item['id']?>" class="col-xs-9" style="text-decoration: none;text-justify: auto">
                                         <h2><?= $item['name']?></h2>
                                         <h4>Price : <?= $item['price']?> tk</h4>
                                         <h5><?= substr($item['ingredients'],0,100)?></h5>
@@ -470,7 +470,7 @@ $counter = 1;
                                 <div class="col-lg-3 col-md-3 col-sm-3"><img src="<?=$item['foodimage']?>" alt="" style="width: 100%;height: 120px" class="img img-responsive col-xs-3 img-thumbnail"></div>
                                 <div class="col-lg-8 col-md-8 col-sm-8">
                                     <input type="text" id="primaryKey<?= $counter?>" value="<?= $item['id']?>" placeholder="primary key" hidden>
-                                    <a href="#" class="col-xs-9" style="text-decoration: none;text-justify: auto">
+                                    <a href="food-review.php?foodId=<?= $item['id']?>" class="col-xs-9" style="text-decoration: none;text-justify: auto">
                                         <h2><?= $item['name']?></h2>
                                         <h4>Price : <?= $item['price']?> tk</h4>
                                         <h5><?= substr($item['ingredients'],0,100)?></h5>
