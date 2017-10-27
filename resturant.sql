@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 26, 2017 at 05:09 AM
+-- Generation Time: Oct 27, 2017 at 05:44 AM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 7.0.13
 
@@ -43,6 +43,28 @@ INSERT INTO `admins` (`id`, `username`, `password`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `chef`
+--
+
+CREATE TABLE `chef` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `image` varchar(255) NOT NULL,
+  `qualification` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `chef`
+--
+
+INSERT INTO `chef` (`id`, `name`, `image`, `qualification`) VALUES
+(1, 'Mithu ahammed', './images/69636701-chef-wallpapers.jpg', 'Master in chick'),
+(2, 'Khalek', './images/out.PNG', 'Pizza master'),
+(4, 'Mokhlech', './images/Capture.PNG', 'adada');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `customer`
 --
 
@@ -61,7 +83,7 @@ CREATE TABLE `customer` (
 
 INSERT INTO `customer` (`id`, `fullname`, `username`, `password`, `address`, `contact`) VALUES
 (1, 'swajan golder', 'swajan', '150214', 'khulna', '01571777609'),
-(2, 'wahid shuvo', 'shuvo', '150233', 'madaripur', '01999626776');
+(2, 'wahid shuvo', 'shuvo', '150233', 'madaripur', '019996267761');
 
 -- --------------------------------------------------------
 
@@ -151,7 +173,10 @@ INSERT INTO `orderitem` (`id`, `foodid`, `amount`, `orderid`) VALUES
 (15, 4, 1, 11),
 (16, 10, 1, 11),
 (17, 12, 2, 12),
-(18, 15, 1, 12);
+(18, 15, 1, 12),
+(19, 1, 1, 13),
+(20, 6, 1, 13),
+(21, 7, 29, 13);
 
 -- --------------------------------------------------------
 
@@ -184,7 +209,8 @@ INSERT INTO `orders` (`id`, `orderdate`, `delivarydate`, `delivarytime`, `phonen
 (9, '2017-10-25', '2017-10-25', '17:50:00.000000', 1935696971, 'Dumuria', 1, 1, 0, 'We will contact with you in no time', 2),
 (10, '2017-10-25', '2017-10-27', '04:05:00.000000', 1717728721, 'Rajshahi', 0, 1, 0, '', 2),
 (11, '2017-10-25', '2017-10-28', '17:06:00.000000', 1999626776, 'Dhaka', 1, 0, 0, '', 2),
-(12, '2017-10-25', '2017-10-28', '17:30:00.000000', 1999626776, 'Khulna univarsity', 1, 1, 0, 'We will contact with you in no time.', 1);
+(12, '2017-10-25', '2017-10-28', '17:30:00.000000', 1999626776, 'Khulna univarsity', 1, 1, 0, 'We will contact with you in no time.', 1),
+(13, '2017-10-26', '2017-10-28', '03:50:00.000000', 4345, 'khulna', 1, 0, 0, 'it is ok', 2);
 
 -- --------------------------------------------------------
 
@@ -214,6 +240,12 @@ INSERT INTO `type` (`type_name`) VALUES
 -- Indexes for table `admins`
 --
 ALTER TABLE `admins`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `chef`
+--
+ALTER TABLE `chef`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -269,6 +301,11 @@ ALTER TABLE `type`
 ALTER TABLE `admins`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
+-- AUTO_INCREMENT for table `chef`
+--
+ALTER TABLE `chef`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
@@ -277,22 +314,22 @@ ALTER TABLE `customer`
 -- AUTO_INCREMENT for table `feedback`
 --
 ALTER TABLE `feedback`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `foodmenu`
 --
 ALTER TABLE `foodmenu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT for table `orderitem`
 --
 ALTER TABLE `orderitem`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 --
 -- Constraints for dumped tables
 --
