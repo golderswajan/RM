@@ -1,6 +1,6 @@
-<?php include_once 'layout/header.php';
-require_once 'Security/redirectToLogin-notLogin.php';
-require_once 'src/database.php';
+<?php include_once '../layout/header.php';
+require_once '../Security/redirectToLogin-notLogin.php';
+require_once '../src/database.php';
 $name=$_SESSION['username'];
 
 $sqlid="select id from customer WHERE username='$name'";
@@ -128,4 +128,4 @@ $contact=$result[0]['contact'];
 
 
 
-<?php include_once 'layout/footer.php'; ?>
+<?php include_once '../layout/footer.php'; ?>

@@ -113,4 +113,4 @@ if (isset($_POST['reg'])) {
 
                 </form>
 
-<?php include_once '../Public/layout/footer.php'; ?>
+<?php include_once '../layout/footer.php'; ?>

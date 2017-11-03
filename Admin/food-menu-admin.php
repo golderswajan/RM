@@ -21,6 +21,7 @@ if(isset($_POST['update']))
         }
 
     }
+    $image_up = $target_file ;
 
     $sql="UPDATE foodmenu SET name='$name',ingredients='$ing',price='$price',foodimage='$image_up' WHERE id='$id';";
     echo $sql;

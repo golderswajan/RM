@@ -53,9 +53,10 @@ $dinner = db_select("select * from foodmenu where type='dinner' limit 0,3");
                 if(isset($_SESSION['type'])&&!strcmp($_SESSION['type'],'admin')){
                     ?>
 
-                    <li><a href="food-menu-admin.php">Food Manage</a></li>
+                    <li><a href="../Admin/food-menu-admin.php">Food Manage</a></li>
                     <li><a href="../Admin/order-admin.php">Order Manage</a></li>
                     <li><a href="../Public/chef-show.php">Chef Manage</a></li>
+                    <li><a href="../Admin/customer-manage.php">Customer Manage</a></li>
 
                     <?php
                 }else {
@@ -67,14 +68,20 @@ $dinner = db_select("select * from foodmenu where type='dinner' limit 0,3");
                     <?php }?>
                 <?php }?>
 
-                <li><a href="#">About</a></li>
+                <li><a href="../Public/about.php">About</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <?php if(!isset($_SESSION['username'])){?>
                     <li><a href="../Public/registration.php"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
                     <li><a href="../Public/login.php"><span class="glyphicon glyphicon-log-in"></span> Sign in</a></li>
                 <?php }else{?>
-                    <li><a href="../Customer/user-page.php"><span class="glyphicon glyphicon-user" style=""></span><span style="color: #00CC00;"><?= $_SESSION['username']?></span></a></li>
+
+                    <?php if(isset($_SESSION['type'])&&!strcmp($_SESSION['type'],'admin')){?>
+                        <li><a href="#"><span class="glyphicon glyphicon-user"></span><span style="color: #00CC00;"><?= $_SESSION['username']?></span></a></li>
+                    <?php }else{?>
+                        <li><a href="../Customer/user-page.php"><span class="glyphicon glyphicon-user"></span><span style="color: #00CC00;"><?= $_SESSION['username']?></span></a></li>
+                    <?php }?>
+
                     <li><a href="../Security/logout.php"><span class="glyphicon glyphicon-log-out"></span> Signout</a></li>
                 <?php }?>
             </ul>

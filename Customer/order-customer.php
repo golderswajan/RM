@@ -21,7 +21,7 @@ require_once '../src/database.php';
     function modalActivate(orderId){
         $.post('../Security/jquery-process.php',{orderId:orderId},function(data){
             var orderDetail = JSON.parse(data);
-            console.log(orderDetail);
+            //console.log(orderDetail);
             var totalCost = 0;
             for(var i=0;i<orderDetail.length-3;i++){
                 $('#modalTable').append("<tr>\n" +

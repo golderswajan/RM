@@ -17,7 +17,6 @@ if (isset($_POST['log'])) {
     //echo $username.$password;
     $query = "SELECT username from admins WHERE username='$username' and password='$password';";
     $result = db_select($query);
-    echo $result[0]['id'];
     if ($result != null) {
 
         if (session_status() == PHP_SESSION_NONE) {
