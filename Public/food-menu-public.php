@@ -48,7 +48,7 @@ $dinner = db_select("select * from foodmenu where type='dinner'");
     }
 </style>
 
-<div class="row">
+<div class="row" hidden>
     <div class="col-md-4 col-sm-4 col-lg-4"><input id="searchText" class="form-control" onkeyup="loadIfEmpty(this.value)"></div>
     <div class="col-md-2 col-sm-2 col-lg-2"><input type="button" class="btn btn-success" onclick="searchFood()"  value="Search"></div>
 

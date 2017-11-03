@@ -1,9 +1,11 @@
 <?php
 include_once '../layout/header.php';
 require_once '../src/database.php';
+$sql="SELECT type_name FROM type;";
+$types=db_select($sql);
 
 $id=$_GET['id'];
-$query="select name,ingredients,price from foodmenu WHERE id='$id'";
+$query="select name,ingredients,price,type from foodmenu WHERE id='$id'";
 $foods=db_select($query);
 
 //$name=$foods['name'];
@@ -46,7 +48,21 @@ $foods=db_select($query);
             ><?= ucfirst($foods[0]['ingredients']) ?></textarea>
         </div>
 
-        <!--Price-->
+        <!--Type-->
+        <div class="form-group col-md-9">
+            <label for="idDet" >Type : <?=$foods[0]['type']?></label>
+            <select  title="Type" class="form-control" name="type" id="">
+                <?php foreach ( $types as $type) { ?>
+                    <?php if(!strcmp($type['type_name'],$foods[0]['type'])){?>
+                        <option value="<?= $type['type_name'];?>" selected><?=ucfirst( $type['type_name']);?></option>
+                    <?php }else{?>
+                        <option value="<?=$type['type_name'];?>"><?=ucfirst( $type['type_name']);?></option>
+                    <?php }?>
+                <?php } ?>
+            </select>
+        </div>
+
+               <!--Price-->
         <div class="form-group col-md-9">
             <label for="inputsm">Price* </label>
 

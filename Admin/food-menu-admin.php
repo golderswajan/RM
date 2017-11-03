@@ -13,18 +13,22 @@ if(isset($_POST['update']))
     $name=$_POST['name'];
     $ing=$_POST['ing'];
     $price=$_POST['price'];
+    $type=$_POST['type'];
     if ($_FILES['image']) {
         $target_dir = "../images/";
         $target_file = $target_dir . basename($_FILES['image']['name']);
         if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
             //echo "done";
+            $image_up = $target_file ;
+            $sql="UPDATE foodmenu SET name='$name',ingredients='$ing',price='$price',type='$type',foodimage='$image_up' WHERE id='$id';";
+        }
+        else{
+            $sql="UPDATE foodmenu SET name='$name',ingredients='$ing',price='$price',type='$type' WHERE id='$id';";
         }
 
     }
-    $image_up = $target_file ;
 
-    $sql="UPDATE foodmenu SET name='$name',ingredients='$ing',price='$price',foodimage='$image_up' WHERE id='$id';";
-    echo $sql;
+
     db_update($sql);
 
     $address = "Location: refresh.php?address=".$_SERVER['PHP_SELF'];
