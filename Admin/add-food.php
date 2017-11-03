@@ -1,6 +1,7 @@
 <?php
-include_once 'layout/header.php';
-include_once 'src/database.php';
+require_once '../Security/redirectToIfNotAdmin.php';
+include_once '../layout/header.php';
+require_once '../src/database.php';
 $sql="SELECT type_name FROM type;";
 $types=db_select($sql);
 
@@ -82,4 +83,4 @@ $types=db_select($sql);
 
     </form>
 
-<?php include_once 'layout/footer.php' ?>
+<?php include_once '../layout/footer.php' ?>

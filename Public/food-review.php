@@ -1,6 +1,6 @@
 <?php
-include_once 'layout/header.php';
-require_once 'src/database.php';
+include_once '../layout/header.php';
+require_once '../src/database.php';
 
 $foodId=$_GET['foodId'];
 if(isset($_POST['post']))
@@ -94,7 +94,7 @@ if(session_status()==PHP_SESSION_NONE){
 <script>
     function deleteFood(foodId,deleteComntId){
         if(confirm('sure to delete the comment')){
-            $.post('jquery-process.php',{deleteComntId:deleteComntId},function(data){
+            $.post('../Security/jquery-process.php',{deleteComntId:deleteComntId},function(data){
                 window.location.href = 'food-review.php?foodId='+foodId;
             });
 
@@ -104,7 +104,7 @@ if(session_status()==PHP_SESSION_NONE){
 
 <div class="">
 
-    <form action="food-review.php?foodId=<?= $foodId ?>" id="form1" method="POST"   enctype="multipart/form-data">
+    <form action="food-review.php?foodId=<?= $foodId ?>" id="form1" method="POST" enctype="multipart/form-data">
 
        <div class="col-md-offset-1">
            <img src="<?=$foods[0]['foodimage']?>" class="img-responsive" >
@@ -131,7 +131,7 @@ if(session_status()==PHP_SESSION_NONE){
                </div>
            <?php endforeach; ?>
            <?php if(!isset($_SESSION['username'])){?>
-           <span style="color: #1B6D85">Please Register and Log in to comment .</span>
+               <span style="color: #1B6D85">Please <a style="color: red" href="../Public/registration.php">Register</a> and <a style="color: green" href="../Public/login.php">Log in</a> to comment .</span>
            <?php }?>
        </div>
 
@@ -147,5 +147,5 @@ if(session_status()==PHP_SESSION_NONE){
 </div>
 
 <?php
-include_once 'layout/footer.php';
+include_once '../layout/footer.php';
 ?>

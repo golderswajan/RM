@@ -1,6 +1,6 @@
 <?php
-include "./layout/header.php";
-require_once "./src/database.php";
+include "../layout/header.php";
+require_once "../src/database.php";
 $id=$_GET['id'];
 $sql="select qualification,image from chef WHERE id='$id'";
 $res=db_select($sql);
@@ -54,6 +54,6 @@ $res=db_select($sql);
 
         </div>
 </div>
-<?php include_once 'layout/footer.php'?>
+<?php include_once '../layout/footer.php' ?>
 
 

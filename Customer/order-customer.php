@@ -5,9 +5,9 @@
  * Date: 10/23/2017
  * Time: 10:16 AM
  */
-require_once 'security/redirectToLogin-notLogin.php';
-include_once 'layout/header.php';
-require_once 'src/database.php';
+require_once '../Security/redirectToLogin-notLogin.php';
+include_once '../layout/header.php';
+require_once '../src/database.php';
 ?>
 
 <script>
@@ -19,7 +19,7 @@ require_once 'src/database.php';
         $('#myModal').css({'display':'none'});
     }
     function modalActivate(orderId){
-        $.post('jquery-process.php',{orderId:orderId},function(data){
+        $.post('../Security/jquery-process.php',{orderId:orderId},function(data){
             var orderDetail = JSON.parse(data);
             console.log(orderDetail);
             var totalCost = 0;
@@ -302,5 +302,5 @@ require_once 'src/database.php';
 
 
 <?php
-    require_once 'layout/footer.php'
+require_once '../layout/footer.php'
 ?>

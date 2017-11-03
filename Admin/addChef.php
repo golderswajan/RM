@@ -1,11 +1,11 @@
 <?php
-include_once 'layout/header.php';
-include_once 'src/database.php';
+include_once '../layout/header.php';
+include_once '../src/database.php';
 
 
 if (isset($_POST['add'])) {
     if ($_FILES['image']) {
-        $target_dir = "./images/";
+        $target_dir = "../images/";
         $target_file = $target_dir.basename($_FILES['image']['name']);
         if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
             echo "done";
@@ -44,7 +44,7 @@ if (isset($_POST['add'])) {
 
     </script>
 
-    <form action="chef-show.php" id="form1" method="POST" enctype="multipart/form-data">
+    <form action="../Public/chef-show.php" id="form1" method="POST" enctype="multipart/form-data">
 
         <h1>New Chef Entry Form</h1>
 
@@ -77,4 +77,4 @@ if (isset($_POST['add'])) {
 
     </form>
 
-<?php include_once 'layout/footer.php' ?>
+<?php include_once '../layout/footer.php' ?>

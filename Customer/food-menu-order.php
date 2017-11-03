@@ -5,9 +5,9 @@
  * Date: 10/18/2017
  * Time: 2:48 AM
  */
-require_once 'security/redirectToLogin-notLogin.php';
-include_once 'layout/header.php';
-require_once 'src/database.php';
+require_once '../Security/redirectToLogin-notLogin.php';
+include_once '../layout/header.php';
+require_once '../src/database.php';
 $breakfast = db_select("select * from foodmenu where type='breakfast'");
 $lunch = db_select("select * from foodmenu where type='lunch'");
 $snack = db_select("select * from foodmenu where type='snacks'");
@@ -37,7 +37,7 @@ $counter = 1;
             setInterval(function () {
                 seconds--;
                 if (seconds == 0) {
-                    window.location.href='order-customer.php';
+                    window.location.href='../Customer/order-customer.php';
                 }
             }, 1000);
            
@@ -103,7 +103,7 @@ $counter = 1;
             var primaryKey = $('#primaryKey'+divId).val();
             //console.log(orderDiv.text());
             if(counter==1) orderDiv.html(getHeaderHtml());
-            $.post('jquery-process.php',{foodMenuPrimaryKey:primaryKey},function(data){
+            $.post('../Security/jquery-process.php',{foodMenuPrimaryKey:primaryKey},function(data){
                     var hiddenRowNumberDiv = $('#rowNumber');
                     var totalCostDiv = $('#totalCostDiv');
                     hiddenRowNumberDiv.remove();
@@ -386,7 +386,7 @@ $counter = 1;
                                 <div class="col-lg-3 col-md-3 col-sm-3"><img src="<?=$item['foodimage']?>" alt="" style="width: 100%;height: 120px" class="img img-responsive col-xs-3 img-thumbnail"></div>
                                 <div class="col-lg-8 col-md-8 col-sm-8">
                                     <input type="text" id="primaryKey<?= $counter?>" value="<?= $item['id']?>" placeholder="primary key" hidden>
-                                    <a href="food-review.php?foodId=<?= $item['id']?>" class="col-xs-9" style="text-decoration: none;text-justify: auto">
+                                    <a href="../Public/food-review.php?foodId=<?= $item['id']?>" class="col-xs-9" style="text-decoration: none;text-justify: auto">
                                         <h2><?= $item['name']?></h2>
                                         <h4>Price : <?= $item['price']?> tk</h4>
                                         <h5><?= substr($item['ingredients'],0,100)?></h5>
@@ -414,7 +414,7 @@ $counter = 1;
                                 <div class="col-lg-3 col-md-3 col-sm-3"><img src="<?=$item['foodimage']?>" alt="" style="width: 100%;height: 120px" class="img img-responsive col-xs-3 img-thumbnail"></div>
                                 <div class="col-lg-8 col-md-8 col-sm-8">
                                     <input type="text" id="primaryKey<?= $counter?>" value="<?= $item['id']?>" placeholder="primary key" hidden>
-                                    <a href="food-review.php?foodId=<?= $item['id']?>" class="col-xs-9" style="text-decoration: none;text-justify: auto">
+                                    <a href="../Public/food-review.php?foodId=<?= $item['id']?>" class="col-xs-9" style="text-decoration: none;text-justify: auto">
                                         <h2><?= $item['name']?></h2>
                                         <h4>Price : <?= $item['price']?> tk</h4>
                                         <h5><?= substr($item['ingredients'],0,100)?></h5>
@@ -442,7 +442,7 @@ $counter = 1;
                                 <div class="col-lg-3 col-md-3 col-sm-3"><img src="<?=$item['foodimage']?>" alt="" style="width: 100%;height: 120px" class="img img-responsive col-xs-3 img-thumbnail"></div>
                                 <div class="col-lg-8 col-md-8 col-sm-8">
                                     <input type="text" id="primaryKey<?= $counter?>" value="<?= $item['id']?>" placeholder="primary key" hidden>
-                                    <a href="food-review.php?foodId=<?= $item['id']?>" class="col-xs-9" style="text-decoration: none;text-justify: auto">
+                                    <a href="../Public/food-review.php?foodId=<?= $item['id']?>" class="col-xs-9" style="text-decoration: none;text-justify: auto">
                                         <h2><?= $item['name']?></h2>
                                         <h4>Price : <?= $item['price']?> tk</h4>
                                         <h5><?= substr($item['ingredients'],0,100)?></h5>
@@ -470,7 +470,7 @@ $counter = 1;
                                 <div class="col-lg-3 col-md-3 col-sm-3"><img src="<?=$item['foodimage']?>" alt="" style="width: 100%;height: 120px" class="img img-responsive col-xs-3 img-thumbnail"></div>
                                 <div class="col-lg-8 col-md-8 col-sm-8">
                                     <input type="text" id="primaryKey<?= $counter?>" value="<?= $item['id']?>" placeholder="primary key" hidden>
-                                    <a href="food-review.php?foodId=<?= $item['id']?>" class="col-xs-9" style="text-decoration: none;text-justify: auto">
+                                    <a href="../Public/food-review.php?foodId=<?= $item['id']?>" class="col-xs-9" style="text-decoration: none;text-justify: auto">
                                         <h2><?= $item['name']?></h2>
                                         <h4>Price : <?= $item['price']?> tk</h4>
                                         <h5><?= substr($item['ingredients'],0,100)?></h5>
@@ -556,4 +556,4 @@ $counter = 1;
            <input type="submit" name="submit" class="btn btn-primary" style="margin-left: 40%" value="Confirm The Order">
         </div>
     </form>
-<?php include_once 'layout/footer.php';?>
+<?php include_once '../layout/footer.php';?>

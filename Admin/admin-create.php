@@ -47,7 +47,7 @@ if (isset($_POST['reg'])) {
         <div class="panel-body">
             <div class="col-md-6">
                 <div class="box-input">
-                    <form class="well-form-horizontal" action="admin-create.php"  method="POST">
+                    <form class="well-form-horizontal" action="admin-create.php" method="POST">
                         <div id="legend">
                             <legend class="">Register</legend>
                         </div>

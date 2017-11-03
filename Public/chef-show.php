@@ -1,12 +1,12 @@
 <?php
-include_once 'layout/header.php';
-include_once 'src/database.php';
+include_once '../layout/header.php';
+include_once '../src/database.php';
 if(isset($_POST['update']))
 {
 
     $id=$_GET['id'];
     if ($_FILES['image']) {
-        $target_dir = "./images/";
+        $target_dir = "../images/";
         $target_file = $target_dir . basename($_FILES['image']['name']);
         if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
             echo "done";
@@ -18,15 +18,17 @@ if(isset($_POST['update']))
     $qualification=$_POST['qualification'];
     $sql="UPDATE chef SET name='$name',image='$image_up',qualification='$qualification' WHERE id='$id';";
     db_update($sql);
+    $address = "Location: refresh.php?address=".$_SERVER['PHP_SELF'];
+    header($address);
 }
 
 
 if (isset($_POST['add'])) {
     if ($_FILES['image']) {
-        $target_dir = "./images/";
+        $target_dir = "../images/";
         $target_file = $target_dir . basename($_FILES['image']['name']);
         if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
-            echo "done";
+            //echo "done";
         }
 
     }
@@ -35,6 +37,8 @@ if (isset($_POST['add'])) {
     $query = "INSERT INTO chef VALUES ('','$_POST[name]','$image_up','$_POST[qualification]')";
 
     db_insert($query);
+    $address = "Location: refresh.php?address=".$_SERVER['PHP_SELF'];
+    header($address);
 }
 $sql = "SELECT * FROM chef ;";
 $res = db_select($sql);
@@ -78,14 +82,18 @@ if(isset($_GET['delete-id']))
 
     <div class="table-responsive container row" style="margin-left: -30px;">
         <br>
-        <a href="addChef.php" class="btn btn-lg btn-success">New Chef</a>
+
+        <?php if(isset($_SESSION['type'])&&!strcmp($_SESSION['type'],'admin')){?>
+        <a href="../Admin/addChef.php" class="btn btn-lg btn-success">New Chef</a>
+        <?php } ?>
+
         <br>
         <br>
         <table class="table">
             <thead>
             <tr>
-                <th>name</th>
-                <th>qualification</th>
+                <th>Name</th>
+                <th>Qualification</th>
                 <th></th>
                 <th></th>
             </tr>
@@ -101,8 +109,11 @@ if(isset($_GET['delete-id']))
                         </a></td>
                     <td style="text-align:center; color: #2e6da4"><?= $item['qualification'] ?></td>
 
+                    <?php if(isset($_SESSION['type'])&&!strcmp($_SESSION['type'],'admin')){
+                    ?>
+
                     <td style="text-align: center">
-                        <a class="edit" href="chef-edit.php?id=<?=$item['id']?>">
+                        <a class="edit" href="../Admin/chef-edit.php?id=<?=$item['id']?>">
                             Edit
                         </a>
                     </td>
@@ -111,6 +122,8 @@ if(isset($_GET['delete-id']))
                             Delete
                         </a>
                     </td>
+
+                    <?php } ?>
                 </tr>
 
             <?php endforeach; ?>
@@ -120,4 +133,4 @@ if(isset($_GET['delete-id']))
 
     </div>
 
-<?php include_once 'layout/footer.php' ?>
+<?php include_once '../layout/footer.php' ?>

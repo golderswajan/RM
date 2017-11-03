@@ -1,11 +1,11 @@
-<?php include_once 'layout/header.php';
-require_once 'src/database.php';
+<?php include_once '../layout/header.php';
+require_once '../src/database.php';
 
 
 if (isset($_POST['reg'])) {
     $query = "INSERT INTO customer VALUES ('','$_POST[fullname]','$_POST[username]','$_POST[password]','$_POST[address]','$_POST[contact]')";
     db_insert($query);
-    header('Location: index.php');
+    header('Location: ../Public/index.php');
 }
 ?>
     <script>
@@ -113,4 +113,4 @@ if (isset($_POST['reg'])) {
 
                 </form>
 
-<?php include_once 'layout/footer.php'; ?>
+<?php include_once '../Public/layout/footer.php'; ?>

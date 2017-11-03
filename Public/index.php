@@ -5,12 +5,11 @@
  * Date: 10/7/2017
  * Time: 4:04 AM
  */
-require_once 'src/database.php';
+require_once '../src/database.php';
 $breakfast = db_select("select * from foodmenu where type='breakfast' limit 0,3");
 $lunch = db_select("select * from foodmenu where type='lunch' limit 0,3");
 $snack = db_select("select * from foodmenu where type='snacks' limit 0,3");
 $dinner = db_select("select * from foodmenu where type='dinner' limit 0,3");
-$counter = 1;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -47,36 +46,36 @@ $counter = 1;
         ?>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="index.php">Home</a></li>
-                <li><a href="food-menu-public.php">Food Menu</a></li>
-                <li><a href="#">Chefs</a></li>
+                <li class="active"><a href="../Public/index.php">Home</a></li>
+                <li><a href="../Public/food-menu-public.php">Food Menu</a></li>
 
                 <?php
                 if(isset($_SESSION['type'])&&!strcmp($_SESSION['type'],'admin')){
                     ?>
 
                     <li><a href="food-menu-admin.php">Food Manage</a></li>
-                    <li><a href="order-admin.php">Order Manage</a></li>
-                    <li><a href="#">Chef Manage</a></li>
+                    <li><a href="../Admin/order-admin.php">Order Manage</a></li>
+                    <li><a href="../Public/chef-show.php">Chef Manage</a></li>
 
                     <?php
                 }else {
                     ?>
-
-                    <li><a href="food-menu-order.php">Order</a></li>
+                    <li><a href="../Public/chef-show.php">Chefs</a></li>
+                    <li><a href="../Customer/food-menu-order.php">Order</a></li>
                     <?php if(isset($_SESSION['type'])&&!strcmp($_SESSION['type'],'customer')){?>
-                        <li><a href="order-customer.php">Order List</a></li>
+                        <li><a href="../Customer/order-customer.php">Order List</a></li>
                     <?php }?>
                 <?php }?>
+
                 <li><a href="#">About</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <?php if(!isset($_SESSION['username'])){?>
-                    <li><a href="registration.php"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                    <li><a href="login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                    <li><a href="../Public/registration.php"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                    <li><a href="../Public/login.php"><span class="glyphicon glyphicon-log-in"></span> Sign in</a></li>
                 <?php }else{?>
-                    <li><a href="user-page.php"><span class="glyphicon glyphicon-user" style=""></span><span style="color: #00CC00;"><?= $_SESSION['username']?></span></a></li>
-                    <li><a href="logout.php"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+                    <li><a href="../Customer/user-page.php"><span class="glyphicon glyphicon-user" style=""></span><span style="color: #00CC00;"><?= $_SESSION['username']?></span></a></li>
+                    <li><a href="../Security/logout.php"><span class="glyphicon glyphicon-log-out"></span> Signout</a></li>
                 <?php }?>
             </ul>
         </div>
@@ -84,6 +83,8 @@ $counter = 1;
 </nav>
 
 <div class="container-fluid">
+
+<!--    carousel starts-->
     <div class="row">
         <div id="myCarousel" class="carousel slide" data-ride="carousel">
             <!-- Indicators -->
@@ -98,7 +99,7 @@ $counter = 1;
             <div class="carousel-inner" style="">
 
                 <div class="item active">
-                    <img src="images/intro-bg.jpg" alt="Los Angeles" style="width:100%;height: 350px;">
+                    <img src="../images/intro-bg.jpg" alt="Los Angeles" style="width:100%;height: 350px;">
                     <div class="carousel-caption">
                         <h3>Our  Decoration</h3>
                         <p>This confirms your delightness.</p>
@@ -106,7 +107,7 @@ $counter = 1;
                 </div>
 
                 <div class="item">
-                    <img src="images/gallery-bg.jpg" alt="Chicago" style="width:100%;height: 350px;">
+                    <img src="../images/gallery-bg.jpg" alt="Chicago" style="width:100%;height: 350px;">
                     <div class="carousel-caption">
                         <h3>Our Gorgeous furnisher</h3>
                         <p>This confirms your 100% comfort.</p>
@@ -114,14 +115,14 @@ $counter = 1;
                 </div>
 
                 <div class="item">
-                    <img src="images/burger.jpg" alt="New York" style="width:100%;height: 350px;">
+                    <img src="../images/burger.jpg" alt="New York" style="width:100%;height: 350px;">
                     <div class="carousel-caption">
                         <h3>Yammy Burger</h3>
                         <p>You must love her</p>
                     </div>
                 </div>
                 <div class="item">
-                    <img src="images/pizza.jpg" alt="New York" style="width:100%;height: 350px;">
+                    <img src="../images/pizza.jpg" alt="New York" style="width:100%;height: 350px;">
                     <div class="carousel-caption">
                         <h3>Delicious Pizza</h3>
                         <p>This 100% satisfies your taste.</p>
@@ -142,7 +143,9 @@ $counter = 1;
         </div>
     </div>
 
-<!--    content ends-->
+<!--    carousel ends-->
+
+
     <div class="content-body container" style="margin-left: 7%;">
 
         <!--Welcome Part Start-->
@@ -152,18 +155,18 @@ $counter = 1;
             <div class="col-md-6 col-lg-7 welcome">
                 <h1 style="color: #9C27B0">Welcome to WE HUNGRY</h1>
                 <p>
-                    <img src="images/restaurant.jpg" class="img col-sm-6 col-xs-8 img-responsive img-circle pull-left">
+                    <img src="../images/restaurant.jpg" class="img col-sm-6 col-xs-8 img-responsive img-circle pull-left">
                     In 2001, <strong>WE HUNGRY RESTAURANT</strong> of Khulna started its all food serving
-                    activities with only some small area for only in place service. Since then, around 6 years it ie serving
-                    standanrd BSTI certified foods.From 2003 it has started serving online order which has a great
-                    reputation .It not only serve foods in khulna but also outside of khulna . Outside of khulna many
-                    people comes for the <strong>WE HUNGRY</strong> test.The price of foods is also resonable here.
-                    We serve <span style="color: #E91E63">Pizza,Burger,Grill,BBQ,Chiken Fry, Fried Rice etc etc.</span>
-                    If you are a crazzy lover of food then as a friend i suggest you to check the <strong>WE HUNGRY</strong>
-                    test.
-                </p>
-            </div>
-            <!--Welcome End-->
+            activities with only some small area for only in place service. Since then, around 6 years it ie serving
+            standanrd BSTI certified foods.From 2003 it has started serving online order which has a great
+            reputation .It not only serve foods in khulna but also outside of khulna . Outside of khulna many
+            people comes for the <strong>WE HUNGRY</strong> test.The price of foods is also resonable here.
+            We serve <span style="color: #E91E63">Pizza,Burger,Grill,BBQ,Chiken Fry, Fried Rice etc etc.</span>
+            If you are a crazzy lover of food then as a friend i suggest you to check the <strong>WE HUNGRY</strong>
+            test.
+            </p>
+        </div>
+        <!--Welcome End-->
 
 <!--            Tab system starts-->
             <div class="col-md-5 col-lg-4 col-xs-11">

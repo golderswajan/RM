@@ -5,8 +5,8 @@
  * Date: 10/18/2017
  * Time: 1:05 AM
  */
-include_once 'layout/header.php';
-require_once 'src/database.php';
+include_once '../layout/header.php';
+require_once '../src/database.php';
 $breakfast = db_select("select * from foodmenu where type='breakfast'");
 $lunch = db_select("select * from foodmenu where type='lunch'");
 $snack = db_select("select * from foodmenu where type='snacks'");
@@ -25,8 +25,9 @@ $dinner = db_select("select * from foodmenu where type='dinner'");
             var div = $(this).parentsUntil('tab-food-parent');
             div.show();
         });
-
-
+    }
+    function loadIfEmpty(value){
+        if(value=='') $('.tab-food-parent').show();
     }
 </script>
 
@@ -48,8 +49,8 @@ $dinner = db_select("select * from foodmenu where type='dinner'");
 </style>
 
 <div class="row">
-    <div class="col-md-4 col-sm-4 col-lg-4"><input id="searchText" class="form-control"></div>
-    <div class="col-md-2 col-sm-2 col-lg-2"><input type="button" class="btn btn-success" onclick="searchFood()" value="Search"></div>
+    <div class="col-md-4 col-sm-4 col-lg-4"><input id="searchText" class="form-control" onkeyup="loadIfEmpty(this.value)"></div>
+    <div class="col-md-2 col-sm-2 col-lg-2"><input type="button" class="btn btn-success" onclick="searchFood()"  value="Search"></div>
 
 </div>
 <!--            Tab system starts-->
@@ -164,4 +165,4 @@ $dinner = db_select("select * from foodmenu where type='dinner'");
 </div>
 <!--            Tab system ends-->
 <!--<input type="button" class="btn btn-primary" style="margin-left: 40%" value="Enter Into Ordering Process">-->
-<?php include_once 'layout/footer.php';?>
+<?php include_once '../layout/footer.php';?>

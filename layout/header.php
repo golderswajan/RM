@@ -10,7 +10,7 @@
     <title></title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <style>
@@ -39,25 +39,25 @@
         ?>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="index.php">Home</a></li>
-                <li><a href="food-menu-public.php">Food Menu</a></li>
-                <li><a href="#">Chefs</a></li>
+                <li class="active"><a href="../Public/index.php">Home</a></li>
+                <li><a href="../Public/food-menu-public.php">Food Menu</a></li>
 
                 <?php
                     if(isset($_SESSION['type'])&&!strcmp($_SESSION['type'],'admin')){
                     ?>
 
-                    <li><a href="food-menu-admin.php">Food Manage</a></li>
-                        <li><a href="order-admin.php">Order Manage</a></li>
-                        <li><a href="#">Chef Manage</a></li>
+                    <li><a href="../Admin/food-menu-admin.php">Food Manage</a></li>
+                        <li><a href="../Admin/order-admin.php">Order Manage</a></li>
+                        <li><a href="../Public/chef-show.php">Chef Manage</a></li>
 
                 <?php
                     }else {
                         ?>
 
-                    <li><a href="food-menu-order.php">Order</a></li>
+                        <li><a href="../Public/chef-show.php">Chefs</a></li>
+                    <li><a href="../Customer/food-menu-order.php">Order</a></li>
                         <?php if(isset($_SESSION['type'])&&!strcmp($_SESSION['type'],'customer')){?>
-                            <li><a href="order-customer.php">Order List</a></li>
+                            <li><a href="../Customer/order-customer.php">Order List</a></li>
                             <?php }?>
                 <?php }?>
 
@@ -66,11 +66,11 @@
             <ul class="nav navbar-nav navbar-right">
 
                 <?php if(!isset($_SESSION['username'])){?>
-                <li><a href="registration.php"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                <li><a href="login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                <li><a href="../Public/registration.php"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                <li><a href="../Public/login.php"><span class="glyphicon glyphicon-log-in"></span> Sign in</a></li>
                 <?php }else{?>
-                <li><a href="user-page.php"><span class="glyphicon glyphicon-user"></span><span style="color: #00CC00;"><?= $_SESSION['username']?></span></a></li>
-                <li><a href="logout.php"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+                <li><a href="../Customer/user-page.php"><span class="glyphicon glyphicon-user"></span><span style="color: #00CC00;"><?= $_SESSION['username']?></span></a></li>
+                <li><a href="../Security/logout.php"><span class="glyphicon glyphicon-log-out"></span> Sign out</a></li>
                 <?php }?>
             </ul>
         </div>

@@ -1,5 +1,5 @@
 <?php include_once 'layout/header.php';
-require_once 'security/redirectToLogin-notLogin.php';
+require_once 'Security/redirectToLogin-notLogin.php';
 require_once 'src/database.php';
 $name=$_SESSION['username'];
 

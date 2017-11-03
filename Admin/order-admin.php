@@ -5,9 +5,9 @@
  * Date: 10/24/2017
  * Time: 4:27 AM
  */
-require_once 'security/redirectToIfNotAdmin.php';
-require_once 'src/database.php';
-include_once 'layout/header.php';
+require_once '../Security/redirectToIfNotAdmin.php';
+require_once '../src/database.php';
+include_once '../layout/header.php';
 ?>
 <style>
 
@@ -196,7 +196,7 @@ include_once 'layout/header.php';
 
     function showOrderTable(){
         $('#myTable').html("");
-        $.post('jquery-process.php',{orderList:"orderList"},function(data){
+        $.post('../Security/jquery-process.php',{orderList:"orderList"},function(data){
             $('#myTable').append(getTableHeaderHtml());
             var orderList = JSON.parse(data);
             var order,html="";
@@ -249,7 +249,7 @@ include_once 'layout/header.php';
 
     function deleteOrder(orderId,rowId){
         if(confirm('Are you sure?')){
-            //$.post('jquery-process.php',{deleteOrderId:orderId});
+            $.post('../Security/jquery-process.php',{deleteOrderId:orderId});
             $('#row'+rowId).css({'display':'none'});
             showOrderTable();
         }
@@ -264,13 +264,13 @@ include_once 'layout/header.php';
     }
     function validate(cbox,orderId,rowId){
         if(confirm('Are You Sure?')){
-            $.post('jquery-process.php',{validate:"validate",validateOrderId:orderId});
+            $.post('../Security/jquery-process.php',{validate:"validate",validateOrderId:orderId});
             $('#'+cbox.id).prop({'disabled':true});
         }else  $('#'+cbox.id).prop({'checked':false});
     }
     function receive(cbox,orderId,rowId){
         if(confirm('Are You Sure?')){
-            $.post('jquery-process.php',{receive:"receive",receiveOrderId:orderId});
+            $.post('../Security/jquery-process.php',{receive:"receive",receiveOrderId:orderId});
             $('#'+cbox.id).prop({'disabled':true});
             $('#row'+rowId).css({"background-color":""});
             console.log(rowId);
@@ -278,7 +278,7 @@ include_once 'layout/header.php';
     }
     function serve(cbox,orderId,rowId){
         if(confirm('Are You Sure?')){
-            $.post('jquery-process.php',{serve:"serve",serveOrderId:orderId});
+            $.post('../Security/jquery-process.php',{serve:"serve",serveOrderId:orderId});
             $('#'+cbox.id).prop({'disabled':true});
         }else  $('#'+cbox.id).prop({'checked':false});
     }
@@ -292,14 +292,14 @@ include_once 'layout/header.php';
     }
     function modalClose(){
         var status = $('#statusText').val();
-        $.post('jquery-process.php',{status:status,statusOrderId:id});
+        $.post('../Security/jquery-process.php',{status:status,statusOrderId:id});
         $('#modalTable').html("");
         $('#myModal').css({'display':'none'});
 
     }
     function modalActivate(orderId){
         id=orderId;
-        $.post('jquery-process.php',{orderId:orderId},function(data){
+        $.post('../Security/jquery-process.php',{orderId:orderId},function(data){
             var orderDetail = JSON.parse(data);
             var totalCost = 0;
             for(var i=0;i<orderDetail.length-3;i++){
@@ -350,7 +350,7 @@ include_once 'layout/header.php';
 
     }
     function infoModalActivate(userName){
-        $.post('jquery-process.php',{userName:userName},function(data){
+        $.post('../Security/jquery-process.php',{userName:userName},function(data){
             var info = JSON.parse(data);
             info = info[0];
             $('#infoBody').html("");
@@ -498,5 +498,5 @@ include_once 'layout/header.php';
 
 
 <?php
-include_once 'layout/footer.php';
+include_once '../layout/footer.php';
 ?>

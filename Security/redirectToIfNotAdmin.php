@@ -9,5 +9,5 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 if(!isset($_SESSION['username'])||!isset($_SESSION['username'])||strcmp($_SESSION['type'],'admin')){
-    header('location: index.php');
+    header('location: ../Public/index.php');
 }

@@ -1,6 +1,6 @@
 <?php
-include_once 'layout/header.php';
-require_once 'src/database.php';
+include_once '../layout/header.php';
+require_once '../src/database.php';
 
 $id=$_GET['id'];
 $query="select name,qualification  from chef WHERE id='$id'";
@@ -23,7 +23,7 @@ $res=db_select($query);
 </style>
 <div class="box-input">
 
-    <form action="chef-show.php?id=<?=$id ?>" id="form1" method="POST" enctype="multipart/form-data">
+    <form action="../Public/chef-show.php?id=<?=$id ?>" id="form1" method="POST" enctype="multipart/form-data">
 
         <h1>Update Chef List</h1>
         <input type="hidden" name="category" value="update">
@@ -67,5 +67,5 @@ $res=db_select($query);
 </div>
 
 <?php
-include_once 'layout/footer.php';
+include_once '../layout/footer.php';
 ?>

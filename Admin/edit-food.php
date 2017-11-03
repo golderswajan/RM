@@ -1,6 +1,6 @@
 <?php
-include_once 'layout/header.php';
-require_once 'src/database.php';
+include_once '../layout/header.php';
+require_once '../src/database.php';
 
 $id=$_GET['id'];
 $query="select name,ingredients,price from foodmenu WHERE id='$id'";
@@ -24,7 +24,7 @@ $foods=db_select($query);
 </style>
 <div class="container">
 
-    <form action="food-menu-admin.php?id=<?=$id ?>" id="form1" method="POST" enctype="multipart/form-data">
+    <form action="../Admin/food-menu-admin.php?id=<?=$id ?>" id="form1" method="POST" enctype="multipart/form-data">
 
         <h1>Update Food Item</h1>
         <input type="hidden" name="category" value="update">
@@ -71,5 +71,5 @@ $foods=db_select($query);
 </div>
 </form>
 <?php
-include_once 'layout/footer.php';
+include_once '../layout/footer.php';
 ?>

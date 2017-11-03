@@ -1,6 +1,7 @@
 <?php
-include "./layout/header.php";
-require_once "./src/database.php";
+require_once '../Security/redirectToIfNotAdmin.php';
+include "../layout/header.php";
+require_once "../src/database.php";
 
 
 
@@ -12,15 +13,27 @@ if(isset($_POST['update']))
     $name=$_POST['name'];
     $ing=$_POST['ing'];
     $price=$_POST['price'];
+    if ($_FILES['image']) {
+        $target_dir = "../images/";
+        $target_file = $target_dir . basename($_FILES['image']['name']);
+        if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
+            //echo "done";
+        }
 
-    $sql="UPDATE foodmenu SET name='$name',ingredients='$ing',price='$price' WHERE id='$id';";
+    }
+
+    $sql="UPDATE foodmenu SET name='$name',ingredients='$ing',price='$price',foodimage='$image_up' WHERE id='$id';";
+    echo $sql;
     db_update($sql);
+
+    $address = "Location: refresh.php?address=".$_SERVER['PHP_SELF'];
+    header($address);
 }
 
 if (isset($_POST['add'])) {
 
     if ($_FILES['image']) {
-        $target_dir = "./images/";
+        $target_dir = "../images/";
         $target_file = $target_dir.basename($_FILES['image']['name']);
         if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
             echo "done";
@@ -35,6 +48,9 @@ if (isset($_POST['add'])) {
     $type=$_POST['type'];
     $query = "INSERT INTO foodmenu (id,name,foodimage,ingredients,price,type) VALUES('','$name','$image_up','$ingredients','$price','$type');";
     db_insert($query);
+
+    $address = "Location: refresh.php?address=".$_SERVER['PHP_SELF'];
+    header($address);
 }
 $query="select * from foodmenu";
 $foods=db_select($query);
@@ -53,7 +69,7 @@ if(isset($_GET['delete-id']))
 <script>
     function deleteRow(id) {
 
-        if(confirm('Are you sure to delete ?'))window.open('./food-menu-admin.php?delete-id=' + id ,'_self');
+        if(confirm('Are you sure to delete ?'))window.open('../Admin/food-menu-admin.php?delete-id=' + id ,'_self');
     }
 </script>
 
@@ -91,7 +107,7 @@ if(isset($_GET['delete-id']))
 
 <div class="row">
     <h2>Food Menu </h2>
-    <h3><a href="add-food.php" class="btn btn-lg btn-success">Add Food</a></h3>
+    <h3><a href="../Admin/add-food.php" class="btn btn-lg btn-success">Add Food</a></h3>
     <hr>
     <?php foreach ($foods as $food): ?>
         <div class="col-lg-4 col-md-6 col-sm-6 clearfix tile">
@@ -100,7 +116,7 @@ if(isset($_GET['delete-id']))
                     <div class="">
                         <img src="<?= $food['foodimage'] ?>" class="img-responsive" alt="" style="text-align: center; " />
                     </div>
-                    <a href="food-review.php?food-id=<?=$food['id']?>"> <h2><?= $food['name'] ?> </h2></a>
+                    <a href="../Public/food-review.php?foodId=<?=$food['id']?>"> <h2><?= $food['name'] ?> </h2></a>
                     <p><?= $food['price']?></p>
                     <a role="button" href="edit-food.php?id=<?=$food['id']?>"> Edit</a>
                     <a role="button" href="#" class="delete"
@@ -112,6 +128,6 @@ if(isset($_GET['delete-id']))
         </div>
     <?php endforeach; ?>
 </div>
-<?php include_once 'layout/footer.php'?>
+<?php include_once '../layout/footer.php' ?>
 
 

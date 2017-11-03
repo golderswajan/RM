@@ -5,7 +5,7 @@
  * Date: 10/18/2017
  * Time: 3:45 AM
  */
-require_once 'src/database.php';
+require_once '../src/database.php';
 $foodMenuPrimaryKey = isset($_POST['foodMenuPrimaryKey'])?$_POST['foodMenuPrimaryKey']:null;
 $orderId = isset($_POST['orderId'])?$_POST['orderId']:null;
 $orderList = isset($_POST['orderList'])?$_POST['orderList']:null;

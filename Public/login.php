@@ -1,7 +1,7 @@
 <?php
 
-include_once 'layout/header.php';
-include_once 'src/database.php';
+include_once '../layout/header.php';
+include_once '../src/database.php';
 
 
 if (isset($_POST['log'])) {
@@ -36,7 +36,7 @@ if (isset($_POST['log'])) {
         }
     </style>
 
-                <form class="box-input form-input"  action="login.php" method="POST">
+                <form class="box-input form-input" action="login.php" method="POST">
                     <div id="legend">
                         <legend style="margin-top: 12px">Login</legend>
                     </div>
@@ -52,7 +52,7 @@ if (isset($_POST['log'])) {
                             <input type="password" id="password" name="password" placeholder=""
                                    class="form-control">
                         </div>
-                        <p><span style="color: red">Not yet registered?</span> <a href="registration.php" style="text-decoration: none;color: #00CC00"> Register now.</a></p>
+                        <p><span style="color: red">Not yet registered?</span> <a href="../public/registration.php" style="text-decoration: none;color: #00CC00"> Register now.</a></p>
 
                         <!-- Button -->
                         <div class="form-group">
@@ -62,4 +62,4 @@ if (isset($_POST['log'])) {
 
                 </form>
 
-<?php include_once 'layout/footer.php' ?>
+<?php include_once '../layout/footer.php' ?>
