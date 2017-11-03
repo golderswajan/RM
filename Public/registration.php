@@ -97,7 +97,7 @@ if (isset($_POST['reg'])) {
 
                         <div class=" form-group">
                             <label class="control-label" for="contact">Contact :</label>
-                            <input type="text" id="contact" name="contact" placeholder="" class="form-control"
+                            <input type="number" id="contact"  name="contact" placeholder="Mobile Number" class="form-control"
                                    required>
                         </div>
 
