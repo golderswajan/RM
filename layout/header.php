@@ -41,6 +41,7 @@
             <ul class="nav navbar-nav">
                 <li class="active"><a href="index.php">Home</a></li>
                 <li><a href="food-menu-public.php">Food Menu</a></li>
+                <li><a href="#">Chefs</a></li>
 
                 <?php
                     if(isset($_SESSION['type'])&&!strcmp($_SESSION['type'],'admin')){
@@ -48,6 +49,7 @@
 
                     <li><a href="food-menu-admin.php">Food Manage</a></li>
                         <li><a href="order-admin.php">Order Manage</a></li>
+                        <li><a href="#">Chef Manage</a></li>
 
                 <?php
                     }else {

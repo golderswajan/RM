@@ -42,11 +42,11 @@ $res=db_select($sql);
 <div class="row">
     <h2>Chef Profile </h2>
     <hr>
-        <div class="col-lg-4 col-md-6 col-sm-6 clearfix tile">
+        <div class="col-lg-4 col-md-6 col-sm-6 col-lg-offset-3 clearfix tile">
 
             <div>
                 <div class="">
-                    <img src="<?= $res[0]['image'] ?>" class="img-responsive" alt="" style="text-align: center; " />
+                    <img src="<?= $res[0]['image'] ?>" class="img-responsive" alt="" style="p " />
                 </div>
                 <div><h3>Qualification: <?= $res[0]['qualification'] ?></h3></div>
 
