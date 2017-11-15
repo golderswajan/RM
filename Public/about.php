@@ -13,7 +13,7 @@ include_once '../layout/header.php';
     <div>
 
         <h1>ABOUT WE HUNGRY</h1>
-        <h2><img class="img img-responsive img-thumbnail img-wide" src="../images/restaurant.jpg.jpg" alt=""/></h2>
+        <h2><img class="img img-responsive img-thumbnail img-wide" src="../images/restaurant.jpg"style="width: 40%" alt=""/></h2>
         <br>
         <p style="text-align: justify">
             In 2001, WE HUNGRY RESTAURANT of Khulna started its all food serving

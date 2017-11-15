@@ -211,7 +211,7 @@ $dinner = db_select("select * from foodmenu where type='dinner' limit 0,3");
 
                             <li class="list-group-item row">
                                 <a href="food-menu-public.php" class="btn btn-primary btn-lg pull-right">
-                                    See all breakfast
+                                    See all foods
                                 </a>
                             </li>
                         </ul>
@@ -232,7 +232,7 @@ $dinner = db_select("select * from foodmenu where type='dinner' limit 0,3");
                             <?php } ?>
                             <li class="list-group-item row">
                                 <a href="food-menu-public.php" class="btn btn-primary btn-lg pull-right">
-                                    See all launch
+                                    See all foods
                                 </a>
                             </li>
                         </ul>
@@ -253,7 +253,7 @@ $dinner = db_select("select * from foodmenu where type='dinner' limit 0,3");
                             <?php } ?>
                             <li class="list-group-item row">
                                 <a href="food-menu-public.php" class="btn btn-primary btn-lg pull-right">
-                                    See all snacks
+                                    See all foods
                                 </a>
                             </li>
                         </ul>
@@ -274,7 +274,7 @@ $dinner = db_select("select * from foodmenu where type='dinner' limit 0,3");
                             <?php } ?>
                             <li class="list-group-item row">
                                 <a href="food-menu-public.php" class="btn btn-primary btn-lg pull-right">
-                                    See all dinners
+                                    See all foods
                                 </a>
                             </li>
                         </ul>

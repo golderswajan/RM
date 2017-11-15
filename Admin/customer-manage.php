@@ -59,6 +59,7 @@ if(isset($_GET['delete-id']))
                 <th>FullName</th>
                 <th>Address</th>
                 <th>Contact</th>
+                <th>Visited Times</th>
                 <th></th>
             </tr>
             </thead>
@@ -67,9 +68,10 @@ if(isset($_GET['delete-id']))
             <?php foreach ($customers as $customer): ?>
                 <tr>
 
-                    <td style="text-align: center"><?= $customer['fullname'] ?></td>
+                    <td style="text-align: center"><a href="customer-vist.php?id=<?=$customer['id']?>"><?= $customer['fullname'] ?></a></td>
                     <td style="text-align:center; color: #2e6da4"><?= $customer['address'] ?></td>
                     <td style="text-align:center; color: #2e6da4"><?= $customer['contact'] ?></td>
+                    <td style="text-align:center; color: #2e6da4"><?= $customer['visits'] ?></td>
 
                     <td>
                         <a href="#"  class="delete" onclick="deleteRow('<?= $customer['id']?>')" >

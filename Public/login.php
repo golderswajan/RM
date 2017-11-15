@@ -2,20 +2,37 @@
 
 include_once '../layout/header.php';
 include_once '../src/database.php';
+$count=0;
 
 
 if (isset($_POST['log'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
     //echo $username.$password;
-    $query = "SELECT username from customer WHERE username='$username' and password='$password';";
+    $query = "SELECT username,id from customer WHERE username='$username' and password='$password';";
+
+
+
 
     $result = db_select($query);
+    $id=$result[0]['id'];
     if ($result != null) {
 
      sessionStart();
      $_SESSION['username'] = $username;
      $_SESSION['type'] = 'customer';
+     $name=$_SESSION['username'];
+        $sql="select visits from customer where username='$name'";
+        $result=db_select($sql);
+        $count=$result[0]['visits']+1;
+       $sql1=" UPDATE customer SET visits='$count' WHERE username='$name';";
+       db_update($sql1);
+
+
+       $historyInsert = "INSERT INTO `history` (`id`, `date`, `customerId`) VALUES (NULL, '".date("Y-m-d")."', '".$id."');";
+       db_insert($historyInsert);
+       //echo $historyInsert;
+
       header('location: index.php');
     }
 

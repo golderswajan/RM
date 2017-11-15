@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 27, 2017 at 05:44 AM
+-- Generation Time: Nov 15, 2017 at 07:18 AM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 7.0.13
 
@@ -58,9 +58,12 @@ CREATE TABLE `chef` (
 --
 
 INSERT INTO `chef` (`id`, `name`, `image`, `qualification`) VALUES
-(1, 'Mithu ahammed', './images/69636701-chef-wallpapers.jpg', 'Master in chick'),
-(2, 'Khalek', './images/out.PNG', 'Pizza master'),
-(4, 'Mokhlech', './images/Capture.PNG', 'adada');
+(1, 'Mithu ahammed ', '../images/', 'Master in chick '),
+(2, 'Khalek', '../images/out.PNG', 'Pizza master'),
+(4, 'Mokhlech', '../images/Capture.PNG', 'adada'),
+(5, 'abcd', '../images/', 'ff'),
+(6, 'abcd', '../images/', 'ff'),
+(11, 'Swajan', '../images/download.jpg', 'ajdkad');
 
 -- --------------------------------------------------------
 
@@ -74,16 +77,21 @@ CREATE TABLE `customer` (
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `address` text NOT NULL,
-  `contact` varchar(255) NOT NULL
+  `contact` varchar(255) NOT NULL,
+  `visits` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `customer`
 --
 
-INSERT INTO `customer` (`id`, `fullname`, `username`, `password`, `address`, `contact`) VALUES
-(1, 'swajan golder', 'swajan', '150214', 'khulna', '01571777609'),
-(2, 'wahid shuvo', 'shuvo', '150233', 'madaripur', '019996267761');
+INSERT INTO `customer` (`id`, `fullname`, `username`, `password`, `address`, `contact`, `visits`) VALUES
+(1, 'swajan golder s', 'swajan', '150214', 'khulna,Bangladesh', '01571777609l', 8),
+(2, 'wahid shuvo', 'shuvo', '150233', 'madaripur', '019996267761', 6),
+(3, 'd', 'fz', 'z', 'y', '12', 1),
+(4, 'Durjoy Bapery', 'durjoy', '150229', 'New Market', '01571777609', 3),
+(5, 'test', 'test', 'test', 'sss', '012', 1),
+(6, 'test2', 'test2', 'test2', 'test2', '324', 1);
 
 -- --------------------------------------------------------
 
@@ -104,10 +112,10 @@ CREATE TABLE `feedback` (
 --
 
 INSERT INTO `feedback` (`id`, `comment`, `customerid`, `foodid`, `date`) VALUES
-(3, 'Good', 1, 1, '2017-10-28'),
-(6, 'it is good', 1, 4, '2017-10-26'),
 (7, 'it is good', 1, 3, '2017-10-26'),
-(8, 'it is delicious', 1, 3, '2017-10-26');
+(9, 'This is a good food', 1, 1, '2017-11-03'),
+(10, 'delicious food', 1, 1, '2017-11-03'),
+(11, '100!!! Taka!!!!', 5, 3, '2017-11-04');
 
 -- --------------------------------------------------------
 
@@ -129,20 +137,45 @@ CREATE TABLE `foodmenu` (
 --
 
 INSERT INTO `foodmenu` (`id`, `name`, `foodimage`, `ingredients`, `price`, `type`) VALUES
-(1, 'Pizza', 'images/pizza.jpg', 'It is a delicious food made of chiken butter.jhjfdgghdvhvxhgvcghxvxhgvxhbvbxvvnbx sbvfnbxzvcnbx hgsdzfhgzdxvc ghsdfhgsdvf hgxvchxvhbxbv hdfgjhxdcvjhxv jhfdgbdvxv dhfgbvhxbvx hdsfjxbnxvbjhxv dfgjhvhbxjvb dshfgbxdbvxbv dzfbvjxznbcv dxhfvbjxdzv vfzhvb xfjkvhbxjhbv dfhgbjf sdfhgbsdf sdfgbshanf jhfgbhasnrbf vhsadrgfbasb f sdfnbvsfvbgbvajsaerhnsbfahf ', 50, 'breakfast'),
-(3, 'Burger', 'images/burger.jpg', 'jhghjgh', 100, 'breakfast'),
-(4, 'Swarma', './images/buy-1-get-1-free-on-your-first-food-order-1488879654.jpg', 'sdjfksjls', 150, 'Snacks'),
-(5, 'Chicken Grill', './images/images.jpg', 'shkfhossoeo', 400, 'Dinner'),
-(6, 'Noodles', './images/new-user-offer-flat-40-cashback-on-first-food-order-at-foodpanda-1483952952.jpg', 'ladjsldna', 300, 'Breakfast'),
-(7, 'Nugget', './images/front-3-1008x500.jpg', 'Kakwkrha', 130, 'Breakfast'),
-(8, 'Fried Rice', './images/friedricechikcken.jpg', 'hfhgdsf', 160, 'Lunch'),
-(9, 'Faluda', './images/faluda.jpg', 'abcdefgh', 60, 'Snacks'),
-(10, 'Donats', './images/donats.jpg', 'abcdefgh', 30, 'Snacks'),
-(11, 'Custard', './images/fruit-custard.jpg', 'bvabnva', 55, 'Lunch'),
-(12, 'Icecream', './images/icecream.jpeg', 'ice', 70, 'Dinner'),
-(13, 'Sandwitch', './images/sandwitch.jpg', 'fhfhhfgcgfd', 25, 'Lunch'),
-(14, 'Saslik', './images/saslik.jpg', 'ggshhgd', 35, 'Lunch'),
-(15, 'Chicken Biriany', './images/chettinad-chicken-biryani1.jpg', 'rice,meat', 150, 'Dinner');
+(1, 'Pizza', '../images/pizza.jpg', 'It is a delicious food made of sugar, salt, butter,chicken', 50, 'Breakfast'),
+(3, 'Burgers', '../images/burger.jpg', 'It is a delicious food made of sugar, salt, butter,chicken', 100, 'Breakfast'),
+(5, 'Chicken Grill', '../images/images.jpg', 'It is a delicious food made of sugar, salt, butter,chicken', 400, 'Dinner'),
+(6, 'Noodles', '../images/new-user-offer-flat-40-cashback-on-first-food-order-at-foodpanda-1483952952.jpg', 'It is a delicious food made of sugar, salt, butter,chicken', 300, 'Breakfast'),
+(7, 'Nugget', '../images/front-3-1008x500.jpg', 'It is a delicious food made of sugar, salt, butter,chicken', 130, 'Breakfast'),
+(8, 'Fried Rice', '../images/friedricechikcken.jpg', 'It is a delicious food made of sugar, salt, butter,chicken', 160, 'Lunch'),
+(9, 'Faluda', '../images/faluda.jpg', 'It is a delicious food made of sugar, salt, butter,chicken', 60, 'Snacks'),
+(10, 'Donats', '../images/donats.jpg', 'It is a delicious food made of sugar, salt, butter,chicken', 30, 'Snacks'),
+(11, 'Custard', '../images/fruit-custard.jpg', 'It is a delicious food made of sugar, salt, butter,chicken', 55, 'Lunch'),
+(12, 'Icecream', '../images/icecream.jpeg', 'It is a delicious food made of sugar, salt, butter,chicken', 70, 'Dinner'),
+(13, 'Sandwitch', '../images/sandwitch.jpg', 'It is a delicious food made of sugar, salt, butter,chicken', 25, 'Lunch'),
+(14, 'Saslik', '../images/saslik.jpg', 'It is a delicious food made of sugar, salt, butter,chicken', 35, 'Lunch'),
+(15, 'Chicken Biriany', '../images/chettinad-chicken-biryani1.jpg', 'It is a delicious food made of sugar, salt, butter,chicken', 150, 'Dinner'),
+(17, 'Fggs', '../images/download.jpg', 'It is a delicious food made of sugar, salt, butter,chicken', 34, 'Breakfast');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `history`
+--
+
+CREATE TABLE `history` (
+  `id` int(11) NOT NULL,
+  `date` date NOT NULL,
+  `customerId` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `history`
+--
+
+INSERT INTO `history` (`id`, `date`, `customerId`) VALUES
+(1, '2017-11-09', 1),
+(5, '2017-11-04', 1),
+(6, '2017-11-04', 2),
+(7, '2017-11-04', 4),
+(8, '2017-11-04', 4),
+(9, '2017-11-04', 1),
+(10, '2017-11-15', 1);
 
 -- --------------------------------------------------------
 
@@ -162,21 +195,20 @@ CREATE TABLE `orderitem` (
 --
 
 INSERT INTO `orderitem` (`id`, `foodid`, `amount`, `orderid`) VALUES
-(7, 6, 2, 6),
-(8, 1, 1, 7),
-(9, 7, 2, 7),
 (10, 6, 1, 8),
-(11, 3, 1, 9),
-(12, 7, 1, 9),
 (13, 9, 1, 10),
 (14, 15, 2, 10),
-(15, 4, 1, 11),
-(16, 10, 1, 11),
 (17, 12, 2, 12),
 (18, 15, 1, 12),
 (19, 1, 1, 13),
 (20, 6, 1, 13),
-(21, 7, 29, 13);
+(21, 7, 29, 13),
+(22, 6, 1, 14),
+(23, 17, 1, 15),
+(24, 3, 1, 16),
+(25, 17, 2, 17),
+(26, 1, 4, 18),
+(27, 3, 7, 18);
 
 -- --------------------------------------------------------
 
@@ -203,14 +235,15 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`id`, `orderdate`, `delivarydate`, `delivarytime`, `phoneno`, `delivaryaddress`, `confirmation`, `validity`, `served`, `status`, `customerid`) VALUES
-(6, '2017-10-23', '2017-10-26', '21:40:00.000000', 1747611697, 'sukdara', 1, 0, 1, 'Thank you very much', 1),
-(7, '2017-10-23', '2017-10-27', '14:40:00.000000', 1571777609, 'sukdara', 1, 1, 1, '', 1),
 (8, '2017-10-23', '2017-10-26', '05:04:00.000000', 1, 'jk', 1, 0, 0, 'please enter valid address and re order', 1),
-(9, '2017-10-25', '2017-10-25', '17:50:00.000000', 1935696971, 'Dumuria', 1, 1, 0, 'We will contact with you in no time', 2),
 (10, '2017-10-25', '2017-10-27', '04:05:00.000000', 1717728721, 'Rajshahi', 0, 1, 0, '', 2),
-(11, '2017-10-25', '2017-10-28', '17:06:00.000000', 1999626776, 'Dhaka', 1, 0, 0, '', 2),
 (12, '2017-10-25', '2017-10-28', '17:30:00.000000', 1999626776, 'Khulna univarsity', 1, 1, 0, 'We will contact with you in no time.', 1),
-(13, '2017-10-26', '2017-10-28', '03:50:00.000000', 4345, 'khulna', 1, 0, 0, 'it is ok', 2);
+(13, '2017-10-26', '2017-10-28', '03:50:00.000000', 4345, 'khulna', 1, 0, 0, 'it is ok', 2),
+(14, '2017-11-03', '2017-11-13', '05:08:00.000000', 2147483647, 'rtrr', 1, 0, 1, 'Welcome You', 1),
+(15, '2017-11-03', '2017-11-22', '21:00:00.000000', 23423, 'sdfsc', 0, 0, 0, '', 1),
+(16, '2017-11-03', '2017-11-09', '13:00:00.000000', 64564646, 'njhb', 1, 1, 0, 'jhjklkjkjknkj', 2),
+(17, '2017-11-04', '2017-11-04', '02:00:00.000000', 1, 'sersdfydfh', 0, 0, 1, '', 5),
+(18, '2017-11-04', '2017-11-04', '05:00:00.000000', 8, 'f', 0, 0, 1, '', 6);
 
 -- --------------------------------------------------------
 
@@ -227,10 +260,10 @@ CREATE TABLE `type` (
 --
 
 INSERT INTO `type` (`type_name`) VALUES
-('breakfast'),
-('dinner'),
-('lunch'),
-('snacks');
+('Breakfast'),
+('Dinner'),
+('Lunch'),
+('Snacks');
 
 --
 -- Indexes for dumped tables
@@ -271,6 +304,13 @@ ALTER TABLE `foodmenu`
   ADD KEY `type` (`type`);
 
 --
+-- Indexes for table `history`
+--
+ALTER TABLE `history`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `customerId` (`customerId`);
+
+--
 -- Indexes for table `orderitem`
 --
 ALTER TABLE `orderitem`
@@ -304,32 +344,37 @@ ALTER TABLE `admins`
 -- AUTO_INCREMENT for table `chef`
 --
 ALTER TABLE `chef`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `feedback`
 --
 ALTER TABLE `feedback`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT for table `foodmenu`
 --
 ALTER TABLE `foodmenu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+--
+-- AUTO_INCREMENT for table `history`
+--
+ALTER TABLE `history`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `orderitem`
 --
 ALTER TABLE `orderitem`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 --
 -- Constraints for dumped tables
 --
@@ -346,6 +391,12 @@ ALTER TABLE `feedback`
 --
 ALTER TABLE `foodmenu`
   ADD CONSTRAINT `foodmenu_ibfk_1` FOREIGN KEY (`type`) REFERENCES `type` (`type_name`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `history`
+--
+ALTER TABLE `history`
+  ADD CONSTRAINT `history_ibfk_1` FOREIGN KEY (`customerId`) REFERENCES `customer` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `orderitem`
